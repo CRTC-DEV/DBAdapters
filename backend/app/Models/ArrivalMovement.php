@@ -25,7 +25,7 @@ class ArrivalMovement extends Model
             : [];
 
         // Populate the fillable property dynamically
-        $this->fillable = array_diff($columns, ['created_at', 'updated_at']);
+        $this->fillable = array_diff($columns, ['Id','created_at', 'updated_at']);
     }
 
     /**
@@ -38,5 +38,11 @@ class ArrivalMovement extends Model
     public function updateArrivalMovement($data, $movementId)
     {
         return self::where('MovementId', $movementId)->update($data);
+    }
+
+    function insertArrivalMovement($data){
+        // dd($data);              
+        // dd($data);
+        return ArrivalMovement::insertGetId($data);
     }
 }

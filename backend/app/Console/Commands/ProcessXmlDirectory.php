@@ -94,7 +94,7 @@ class ProcessXmlDirectory extends Command
         //var_dump($names);
  
     foreach ($xmldata as $name) {
-        var_dump( $name);
+        //var_dump( $name);
     }
         //$arrivalMovements =$xml->xpathValue('//ArrivalMovements/ArrivalMovement');
         //dd($arrivalMovements);
@@ -153,7 +153,8 @@ class ProcessXmlDirectory extends Command
                 $arrivalMovement->updateArrivalMovement($dataToInsert, $movement->MovementId);
             }
             else{
-                ArrivalMovement::create($dataToInsert);
+                $arrivalMovement = new ArrivalMovement();
+                $arrivalMovement->insertArrivalMovement($dataToInsert);
             }
         }
     }
