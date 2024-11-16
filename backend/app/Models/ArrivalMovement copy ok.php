@@ -37,6 +37,6 @@ class ArrivalMovement extends Model
      */
     public function updateArrivalMovement($data, $movementId)
     {
-        return self::where('MovementId', $movementId)->update($data);
+        return self::where('Id', $movementId)->update($data);
     }
 }
