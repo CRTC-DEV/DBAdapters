@@ -13,7 +13,7 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
 {
     // Lên lịch chạy command xử lý XML mỗi 5 giây
-    $schedule->command('xml:process-directory')->everyFiveSeconds();
+    $schedule->command('xml:process-directory')->everyMinute();
 
     // Lên lịch chạy command dọn dẹp file cũ mỗi ngày
     $schedule->command('files:cleanup-processed')->daily();

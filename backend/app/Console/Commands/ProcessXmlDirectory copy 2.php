@@ -7,7 +7,6 @@ use Illuminate\Support\Facades\File;
 use Saloon\XmlWrangler\XmlReader;
 use SimpleXMLElement;
 use App\Models\ArrivalMovement;
-use App\Models\DepartureMovement;
 use Carbon\Carbon;
 use Exception;
 
@@ -150,22 +149,12 @@ class ProcessXmlDirectory extends Command
             //check flightType and operationType
             if($flightType == 'A' && $operationType == 'UPDATE'){
                 // Lưu dữ liệu vào database
-                $ArrivalMovement = new ArrivalMovement();
-                $ArrivalMovement->updateArrivalMovement($dataToInsert, $movement->MovementId);
+                $arrivalMovement = new ArrivalMovement();
+                $arrivalMovement->updateArrivalMovement($dataToInsert, $movement->MovementId);
             }
             else{
-                $ArrivalMovement = new ArrivalMovement();
-                $ArrivalMovement->insertArrivalMovement($dataToInsert);
-            }
-
-            if($flightType == 'D' && $operationType == 'UPDATE'){
-                // Lưu dữ liệu vào database
-                $DepartureMovement = new DepartureMovement();
-                $DepartureMovement->updateDepartureMovement($dataToInsert, $movement->MovementId);
-            }
-            else{
-                $DepartureMovement = new DepartureMovement();
-                $DepartureMovement->insertDepartureMovement($dataToInsert);
+                $arrivalMovement = new ArrivalMovement();
+                $arrivalMovement->insertArrivalMovement($dataToInsert);
             }
         }
     }
