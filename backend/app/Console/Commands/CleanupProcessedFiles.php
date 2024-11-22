@@ -28,7 +28,7 @@ class CleanupProcessedFiles extends Command
             $lastModified = Carbon::createFromTimestamp($file->getMTime());
 
             // Kiểm tra nếu file đã tồn tại hơn 30 ngày
-            if ($lastModified->lt(now()->subDays(30))) {
+            if ($lastModified->lt(now()->subDays(1))) {
                 File::delete($file);
                 $this->info("Deleted file: " . $file->getFilename());
             }
