@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Schema;
 class DepartureMovement extends Model
 {
     protected $table = 'DepartureMovement';
-    
+
     // Disable automatic timestamps
     public $timestamps = false;
 
@@ -20,12 +20,12 @@ class DepartureMovement extends Model
         parent::__construct($attributes);
 
         // Ensure $columns is always an array
-        $columns = Schema::hasTable($this->getTable()) 
-            ? Schema::getColumnListing($this->getTable()) 
+        $columns = Schema::hasTable($this->getTable())
+            ? Schema::getColumnListing($this->getTable())
             : [];
 
         // Populate the fillable property dynamically
-        $this->fillable = array_diff($columns, ['Id','created_at', 'updated_at']);
+        $this->fillable = array_diff($columns, ['Id', 'created_at', 'updated_at']);
     }
 
     /**
@@ -35,14 +35,30 @@ class DepartureMovement extends Model
      * @param int $movementId
      * @return int
      */
-    public function updateDepartureMovement($data, $movementId)
+    public function updateMovement($data, $movementId)
     {
         return self::where('MovementId', $movementId)->update($data);
     }
+   
 
-    function insertDepartureMovement($data){
-        // dd($data);              
-        // dd($data);
-        return DepartureMovement::insertGetId($data);
+    public function insertMovement($data)
+    {
+        // Kiểm tra ID trùng lặp trước khi insert
+        $info='';
+        if (isset($data['MovementId'])) {
+            $existingRecord = DepartureMovement::where('MovementId', $data['MovementId'])->first();;
+            if ($existingRecord) {
+                // Nếu ID đã tồn tại, trả về thông báo và update flight
+                DepartureMovement::updateMovement($data, $data['MovementId']);
+                $info='Update DepartureMovement successfully';
+                
+            } else {
+                // Insert nếu không bị trùng
+                $newId = DepartureMovement::insertGetId($data);
+                $info='Insert DepartureMovement successfully';
+                
+            }
+        }
+        return $info;
     }
 }

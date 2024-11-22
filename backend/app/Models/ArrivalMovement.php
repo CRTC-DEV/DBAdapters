@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Schema;
 class ArrivalMovement extends Model
 {
     protected $table = 'ArrivalMovement';
-    
+
     // Disable automatic timestamps
     public $timestamps = false;
 
@@ -20,12 +20,12 @@ class ArrivalMovement extends Model
         parent::__construct($attributes);
 
         // Ensure $columns is always an array
-        $columns = Schema::hasTable($this->getTable()) 
-            ? Schema::getColumnListing($this->getTable()) 
+        $columns = Schema::hasTable($this->getTable())
+            ? Schema::getColumnListing($this->getTable())
             : [];
 
         // Populate the fillable property dynamically
-        $this->fillable = array_diff($columns, ['Id','created_at', 'updated_at']);
+        $this->fillable = array_diff($columns, ['Id', 'created_at', 'updated_at']);
     }
 
     /**
@@ -35,14 +35,29 @@ class ArrivalMovement extends Model
      * @param int $movementId
      * @return int
      */
-    public function updateArrivalMovement($data, $movementId)
+    public function updateMovement($data, $movementId)
     {
         return self::where('MovementId', $movementId)->update($data);
     }
 
-    function insertArrivalMovement($data){
-        // dd($data);              
-        // dd($data);
-        return ArrivalMovement::insertGetId($data);
+    public function insertMovement($data)
+    {
+        // Kiểm tra ID trùng lặp trước khi insert
+        $info='';
+        if (isset($data['MovementId'])) {
+            $existingRecord = ArrivalMovement::where('MovementId', $data['MovementId'])->first();;
+            if ($existingRecord) {
+                // Nếu ID đã tồn tại, trả về thông báo và update flight
+                ArrivalMovement::updateMovement($data, $data['MovementId']);
+                $info='Update ArrivalMovement successfully';
+                
+            } else {
+                // Insert nếu không bị trùng
+                $newId = ArrivalMovement::insertGetId($data);
+                $info='Insert ArrivalMovement successfully';
+                
+            }
+        }
+        return $info;
     }
 }

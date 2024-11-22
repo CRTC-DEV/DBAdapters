@@ -44,9 +44,9 @@ class ProcessXmlDirectory extends Command
     public function handle()
     {
         //while (true) {
-            $this->processFiles();
-            //dd('ok');
-            //sleep(5); // Chờ 5 giây trước khi kiểm tra lại
+        $this->processFiles();
+        //dd('ok');
+        //sleep(5); // Chờ 5 giây trước khi kiểm tra lại
         //}
     }
 
@@ -57,17 +57,14 @@ class ProcessXmlDirectory extends Command
 
         foreach ($xmlFiles as $file) {
             if (pathinfo($file, PATHINFO_EXTENSION) == 'xml') {
-                //$reader = XmlReader::fromFile($file);
-                //$xmlContent = file_get_contents($file);
-                //$reader = XmlReader::fromString($xmlContent);
-                //dd($xmlContent);
+
 
                 try {
                     // Gọi hàm xử lý XML
                     $this->processXml($file);
                     // Di chuyển file vào thư mục PROCESSED
-                    File::move($file, $this->processedDir . '/' . $file->getFilename());
-                    $this->info('Successfully processed file: ' . $file->getFilename());
+                    //File::move($file, $this->processedDir . '/' . $file->getFilename());
+                    //$this->info('Successfully processed file: ' . $file->getFilename());
                 } catch (\Exception $e) {
                     // Di chuyển file vào thư mục ERROR nếu có lỗi
                     // File::move($file, $this->errorDir . '/' . $file->getFilename());
@@ -77,97 +74,45 @@ class ProcessXmlDirectory extends Command
         }
     }
 
-    private function processXml2($file)
-    {
-        // Sử dụng XmlWrangler để phân tích cú pháp XML
-        $xml = XmlReader::fromFile($file);
-        //$reader = XmlReader::fromFile('path/to/file.xml');
-        //$elements = $xml->elements();
-        // Truy cập vào các phần tử cần thiết trong XML
-        // $arrivalMovements = $xml->find('ArrivalMovements.ArrivalMovement');
-        $elements = $xml->elements(); // Array of `Element::class` DTOs
-        
-        $xmldata = $xml->values(); // Array of values.
-        //$xmldata = json_e$reader->xpathValue
-        //$names = $xml->element('ArrivalMovement')->lazy();
-        //$names = $xml->value('ArrivalMovement')->collect();
-        $names = $xml->value('ArrivalMovement')->collectLazy();
-        //var_dump($names);
- 
-    foreach ($xmldata as $name) {
-        //var_dump( $name);
-    }
-        //$arrivalMovements =$xml->xpathValue('//ArrivalMovements/ArrivalMovement');
-        //dd($arrivalMovements);
-        //$json= response()->json($xmldata);
-        //var_dump($xmldata); 
-        // Lấy danh sách các cột trong model ArrivalMovement
-        $columns = (new ArrivalMovement())->getFillable();
-        //dd($columns);
-        // Lấy các giá trị từ XML tương ứng với các cột trong model
-        $dataToInsert = collect($xmldata)->only($columns)->toArray();
-        //dd($dataToInsert);
 
-        //dd($values);
-        return response()->json($xmldata);
-        // foreach ($arrivalMovements as $movement) {
-            // $flightId = $movement->get('FlightId');
-            // $statusArr = $movement->get('StatusArr');
-
-            // Lưu dữ liệu vào database
-            // Flight::create([
-                // 'flight_id' => $flightId,
-                // 'status_arr' => $statusArr,
-            // ]);
-        //}
-    }
 
     private function processXml($filePath)
     {
         // Load XML file using SimpleXML
         $xml = simplexml_load_file($filePath);
-        //Check FlightType
-        $flightType = $xml->xpath('//FlightType')[0];//get string from array
-        //Check OperationType
-        $operationType = $xml->xpath('//OperationType')[0];//get string from array
-        
-        
 
-           // Find the ArrivalMovement nodes
-            $arrivalMovements = $xml->xpath('//ArrivalMovement');
-            $columns = (new ArrivalMovement())->getFillable();
-            foreach ($arrivalMovements as $movement) {
-            // Lấy tất cả các cột trong model trừ các cột cần bỏ qua        
-            $fillableColumns = $columns;
-            // Chỉ lấy dữ liệu từ XML tương ứng với các cột được định nghĩa trong bảng
+        // Extract FlightType and OperationType
+        $flightType = (string) $xml->xpath('//FlightType')[0];
+        $operationType = (string) $xml->xpath('//OperationType')[0];
+
+        // Determine the appropriate model and columns based on FlightType
+        $model = ($flightType == 'A') ? new ArrivalMovement() : new DepartureMovement();
+        $columns = $model->getFillable();
+
+        // Find FlightMovement nodes
+        $flightMovements = $xml->xpath('//FlightMovement');
+
+        foreach ($flightMovements as $movement) {
+            // Extract data for defined columns
             $dataToInsert = [];
-                foreach ($fillableColumns as $column) {
-                    if (isset($movement->{$column})) {
+            foreach ($columns as $column) {
+                if (isset($movement->{$column})) {
                     $dataToInsert[$column] = (string) $movement->{$column};
                 }
-                }
-           //dd($movement->MovementId);
-            //check flightType and operationType
-            if($flightType == 'A' && $operationType == 'UPDATE'){
-                // Lưu dữ liệu vào database
-                $ArrivalMovement = new ArrivalMovement();
-                $ArrivalMovement->updateArrivalMovement($dataToInsert, $movement->MovementId);
-            }
-            else{
-                $ArrivalMovement = new ArrivalMovement();
-                $ArrivalMovement->insertArrivalMovement($dataToInsert);
             }
 
-            if($flightType == 'D' && $operationType == 'UPDATE'){
-                // Lưu dữ liệu vào database
-                $DepartureMovement = new DepartureMovement();
-                $DepartureMovement->updateDepartureMovement($dataToInsert, $movement->MovementId);
-            }
-            else{
-                $DepartureMovement = new DepartureMovement();
-                $DepartureMovement->insertDepartureMovement($dataToInsert);
+            // Determine the operation method and execute
+            try {
+                if ($operationType == 'UPDATE') {
+                    $model->updateMovement($dataToInsert, $movement->MovementId);
+                    $info = 'Update FlightMovement successfully';
+                } elseif ($operationType == 'INSERT') {
+                    $info =  $model->insertMovement($dataToInsert);
+                }
+                $this->info($info . '=' . $movement->MovementId.$flightType);
+            } catch (Exception $e) {
+                $this->error("Error processing Movement: " . $movement->MovementId . " | Error: " . $e->getMessage());
             }
         }
     }
-
 }
