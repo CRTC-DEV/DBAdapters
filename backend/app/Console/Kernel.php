@@ -16,9 +16,9 @@ class Kernel extends ConsoleKernel
     $schedule->command('xml:process-directory')->everyMinute();
 
     // Lên lịch chạy command dọn dẹp file cũ mỗi ngày
-    $schedule->command('files:cleanup-processed')->daily();
+    $schedule->command('xml:cleanup-processed')->daily();
+    
 }
-
     
     
     

@@ -27,3 +27,14 @@ Route::get('/run-process-xml', function () {
     // Trả về kết quả cho người dùng
     return nl2br($output);
 });
+
+Route::get('/run-clear-all', function () {
+    // Chạy lệnh Artisan xml:process
+    Artisan::call('xml:cleanup-all');
+
+    // Lấy kết quả trả về từ Artisan Command
+    $output = Artisan::output();
+
+    // Trả về kết quả cho người dùng
+    return nl2br($output);
+});

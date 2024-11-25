@@ -25,7 +25,7 @@ class DepartureMovement extends Model
             : [];
 
         // Populate the fillable property dynamically
-        $this->fillable = array_diff($columns, ['Id', 'created_at', 'updated_at']);
+        $this->fillable = array_diff($columns, ['created_at', 'updated_at']);
     }
 
     /**
@@ -41,15 +41,15 @@ class DepartureMovement extends Model
     }
    
 
-    public function insertMovement($data)
+    public function insertMovement($data,$movementId)
     {
         // Kiểm tra ID trùng lặp trước khi insert
         $info='';
-        if (isset($data['MovementId'])) {
-            $existingRecord = DepartureMovement::where('MovementId', $data['MovementId'])->first();;
+        if (isset($movementId)) {
+            $existingRecord = DepartureMovement::where('MovementId', $movementId)->first();;
             if ($existingRecord) {
                 // Nếu ID đã tồn tại, trả về thông báo và update flight
-                DepartureMovement::updateMovement($data, $data['MovementId']);
+                DepartureMovement::updateMovement($data, $movementId);
                 $info='Update DepartureMovement successfully';
                 
             } else {

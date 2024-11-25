@@ -1,27 +1,27 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <Messages>
-  <Timestamp>20241120_150403<FlightMovements xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Timestamp>20241123_082111<FlightMovements xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <Type>1</Type>
   <OperationType>INSERT</OperationType>
   <FlightType>A</FlightType>
   <FlightMovement>
-    <Id>5664</Id>
-    <MovementId>1333268</MovementId>
-    <AircraftId>11</AircraftId>
-    <AircraftTypeId>11</AircraftTypeId>
-    <MovementDatetime>2024-09-13T14:40:00</MovementDatetime>
-    <RouteId>246</RouteId>
-    <AirlineId>19</AirlineId>
-    <FlightId>VJ5529</FlightId>
-    <ScheduledDatetime>2024-09-13T14:40:00</ScheduledDatetime>
-    <StandId>0</StandId>
-    <CarouselId>0</CarouselId>
+    <Id>9807</Id>
+    <MovementId>1382697</MovementId>
+    <AircraftId>0</AircraftId>
+    <AircraftTypeId>54</AircraftTypeId>
+    <MovementDatetime>2024-11-23T23:50:00</MovementDatetime>
+    <RouteId>66</RouteId>
+    <AirlineId>9</AirlineId>
+    <FlightId>KE467</FlightId>
+    <ScheduledDatetime>2024-11-23T23:50:00</ScheduledDatetime>
+    <StandId>15</StandId>
+    <CarouselId>5</CarouselId>
     <PaxAdult>0</PaxAdult>
     <EstimatedTime>1753-01-01T12:00:00</EstimatedTime>
-    <ConfidentTime>2024-09-13T14:40:00</ConfidentTime>
+    <ConfidentTime>2024-11-23T23:50:00</ConfidentTime>
     <PaxChild>0</PaxChild>
     <ConfidentPaxCount>0</ConfidentPaxCount>
-    <StatusArr>Cancelled</StatusArr>
+    <StatusArr>On Time</StatusArr>
     <Qualifier>J - Scheduled Passenger</Qualifier>
     <FirstBagTime>1753-01-01T12:00:00</FirstBagTime>
     <LastBagTime>1753-01-01T12:00:00</LastBagTime>
@@ -35,17 +35,16 @@
     <ChocksOn>1753-01-01T12:00:00</ChocksOn>
     <ChocksOff>1753-01-01T12:00:00</ChocksOff>
     <PaxInfant>0</PaxInfant>
-    <NonOperational>1</NonOperational>
+    <NonOperational>0</NonOperational>
     <NonSeasonal>0</NonSeasonal>
-    <BatchDate>1753-01-01T12:00:00</BatchDate>
+    <StandAllocation>S36</StandAllocation>
+    <BatchDate>2024-11-22T20:37:00</BatchDate>
     <BaggageLoadTotal>0</BaggageLoadTotal>
     <MovementSourceDataVersion>0</MovementSourceDataVersion>
-    <ResponseCode>OK</ResponseCode>
-    <Status>3</Status>
+    <Status>0</Status>
     <Status_B>CLS       </Status_B>
     <Status_A>0</Status_A>
-    <CreateDate>2024-09-13T04:06:35.670</CreateDate>
-    <ResponsedDate>2024-09-15T03:47:58</ResponsedDate>
+    <CreateDate>2024-11-23T00:26:56.610</CreateDate>
   </FlightMovement>
 </FlightMovements></Timestamp>
 </Messages>

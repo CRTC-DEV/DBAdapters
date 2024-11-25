@@ -1,0 +1,49 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<Messages>
+  <Timestamp>20241123_082059<FlightMovements xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Type>1</Type>
+  <OperationType>INSERT</OperationType>
+  <FlightType>A</FlightType>
+  <FlightMovement>
+    <Id>9805</Id>
+    <MovementId>1394139</MovementId>
+    <AircraftId>0</AircraftId>
+    <AircraftTypeId>54</AircraftTypeId>
+    <MovementDatetime>2024-11-24T02:50:00</MovementDatetime>
+    <RouteId>18</RouteId>
+    <AirlineId>19</AirlineId>
+    <FlightId>VJ5283</FlightId>
+    <ScheduledDatetime>2024-11-24T02:50:00</ScheduledDatetime>
+    <StandId>0</StandId>
+    <CarouselId>5</CarouselId>
+    <PaxAdult>0</PaxAdult>
+    <EstimatedTime>1753-01-01T12:00:00</EstimatedTime>
+    <ConfidentTime>2024-11-24T02:50:00</ConfidentTime>
+    <PaxChild>0</PaxChild>
+    <ConfidentPaxCount>0</ConfidentPaxCount>
+    <StatusArr>On Time</StatusArr>
+    <Qualifier>C - Chartered Passenger</Qualifier>
+    <FirstBagTime>1753-01-01T12:00:00</FirstBagTime>
+    <LastBagTime>1753-01-01T12:00:00</LastBagTime>
+    <HandlerArr>SAGS</HandlerArr>
+    <PBB1Start>1753-01-01T12:00:00</PBB1Start>
+    <PBB1End>1753-01-01T12:00:00</PBB1End>
+    <PBB2Start>1753-01-01T12:00:00</PBB2Start>
+    <PBB2End>1753-01-01T12:00:00</PBB2End>
+    <PBB3Start>1753-01-01T12:00:00</PBB3Start>
+    <PBB3End>1753-01-01T12:00:00</PBB3End>
+    <ChocksOn>1753-01-01T12:00:00</ChocksOn>
+    <ChocksOff>1753-01-01T12:00:00</ChocksOff>
+    <PaxInfant>0</PaxInfant>
+    <NonOperational>0</NonOperational>
+    <NonSeasonal>1</NonSeasonal>
+    <BatchDate>2024-11-22T20:37:00</BatchDate>
+    <BaggageLoadTotal>0</BaggageLoadTotal>
+    <MovementSourceDataVersion>0</MovementSourceDataVersion>
+    <Status>0</Status>
+    <Status_B>CLS       </Status_B>
+    <Status_A>0</Status_A>
+    <CreateDate>2024-11-23T00:26:56.603</CreateDate>
+  </FlightMovement>
+</FlightMovements></Timestamp>
+</Messages>

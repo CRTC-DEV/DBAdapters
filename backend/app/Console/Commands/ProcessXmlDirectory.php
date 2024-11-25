@@ -63,11 +63,11 @@ class ProcessXmlDirectory extends Command
                     // Gọi hàm xử lý XML
                     $this->processXml($file);
                     // Di chuyển file vào thư mục PROCESSED
-                    //File::move($file, $this->processedDir . '/' . $file->getFilename());
-                    //$this->info('Successfully processed file: ' . $file->getFilename());
+                    File::move($file, $this->processedDir . '/' . $file->getFilename());
+                    $this->info('Successfully processed file: ' . $file->getFilename());
                 } catch (\Exception $e) {
                     // Di chuyển file vào thư mục ERROR nếu có lỗi
-                    // File::move($file, $this->errorDir . '/' . $file->getFilename());
+                    File::move($file, $this->errorDir . '/' . $file->getFilename());
                     $this->error('Failed to process file: ' . $file->getFilename() . ' | Error: ' . $e->getMessage());
                 }
             }
@@ -107,7 +107,7 @@ class ProcessXmlDirectory extends Command
                     $model->updateMovement($dataToInsert, $movement->MovementId);
                     $info = 'Update FlightMovement successfully';
                 } elseif ($operationType == 'INSERT') {
-                    $info =  $model->insertMovement($dataToInsert);
+                    $info =  $model->insertMovement($dataToInsert,$movement->MovementId);
                 }
                 $this->info($info . '=' . $movement->MovementId.$flightType);
             } catch (Exception $e) {
