@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Artisan;
+
+use App\Livewire\FlightScheduleLive;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,6 +19,14 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/flight-schedule', FlightScheduleLive::class)->name('flight-schedule');
+
+
+
+
+
+
+//For auto read xml files
 Route::get('/run-process-xml', function () {
     // Chạy lệnh Artisan xml:process
     Artisan::call('xml:process-directory');
