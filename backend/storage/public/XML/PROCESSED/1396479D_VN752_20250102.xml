@@ -1,27 +1,27 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <Flights>
-  <Timestamp>2024-11-27 15:03:47</Timestamp>
-  <FlightType>B</FlightType>
+  <Timestamp>2025-01-02 11:00:32</Timestamp>
+  <FlightType>D</FlightType>
   <Flight>
-    <MovementId>1395094</MovementId>
+    <MovementId>1396479</MovementId>
     <AircraftId>0</AircraftId>
-    <AircraftTypeId>54</AircraftTypeId>
-    <MovementDatetime>2024-11-27 21:45:00</MovementDatetime>
-    <RouteId>66</RouteId>
+    <AircraftTypeId>55</AircraftTypeId>
+    <MovementDatetime>2025-01-02 14:45:00</MovementDatetime>
+    <RouteId>7</RouteId>
     <AirlineId>10</AirlineId>
-    <FlightId>VN440</FlightId>
-    <ScheduledDatetime>2024-11-27 21:45:00</ScheduledDatetime>
+    <FlightId>VN752</FlightId>
+    <ScheduledDatetime>2025-01-02 14:45:00</ScheduledDatetime>
     <StandId>0</StandId>
-    <ChuteId>2</ChuteId>
-    <GateId>2</GateId>
+    <ChuteId>1</ChuteId>
+    <GateId>1</GateId>
     <GateStatus>On Time</GateStatus>
     <PaxAdult>0</PaxAdult>
     <PaxCount></PaxCount>
     <StatusDep>On Time</StatusDep>
-    <Qualifier>J - Scheduled Passenger</Qualifier>
+    <Qualifier>C - Chartered Passenger</Qualifier>
     <HandlerDep>AGS</HandlerDep>
     <EstimatedTime>1753-01-01 12:00:00</EstimatedTime>
-    <ConfidentTime>2024-11-27 21:45:00</ConfidentTime>
+    <ConfidentTime>2025-01-02 14:45:00</ConfidentTime>
     <PaxChild>0</PaxChild>
     <SuffixId></SuffixId>
     <RemarksDep></RemarksDep>
@@ -47,7 +47,7 @@
     <BaggageLoadTotal>0</BaggageLoadTotal>
     <ChuteChangeLog></ChuteChangeLog>
     <MeastroDCS>False</MeastroDCS>
-    <CounterDetail>T2D-C01, T2D-C02, T2D-C03, T2D-C04</CounterDetail>
+    <CounterDetail>T2D-C05, T2D-C06, T2D-C07, T2D-C08</CounterDetail>
     <Status>2</Status>
     <GateCloseTime1>1753-01-01 12:00:00</GateCloseTime1>
     <GateCloseTime2>1753-01-01 12:00:00</GateCloseTime2>
@@ -58,8 +58,8 @@
     <StartRecheckin1>1753-01-01 12:00:00</StartRecheckin1>
     <StartRecheckin2>1753-01-01 12:00:00</StartRecheckin2>
     <RecheckinChangeLog></RecheckinChangeLog>
-    <Id>14852</Id>
-    <BatchDate>2024-11-26 21:01:00</BatchDate>
+    <Id>17551</Id>
+    <BatchDate>2025-01-01 21:31:00</BatchDate>
     <MovementSourceDataVersion>0</MovementSourceDataVersion>
     <Status_B>0         </Status_B>
     <ResponseCode>OK</ResponseCode>
@@ -68,7 +68,9 @@
     <FrontCounter>0</FrontCounter>
     <TransferCounter>0</TransferCounter>
     <GateReBoarding></GateReBoarding>
-    <CreatedDate>2024-11-27 00:27:11.067000</CreatedDate>
-    <ResponsedDate>2024-11-27 15:03:02</ResponsedDate>
+    <CreatedDate>2025-01-01 17:15:06.010000</CreatedDate>
+    <ResponsedDate>2025-01-02 11:00:19</ResponsedDate>
+    <Notification>False</Notification>
+    <SynNotification>True</SynNotification>
   </Flight>
 </Flights>

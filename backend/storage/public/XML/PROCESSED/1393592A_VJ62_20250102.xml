@@ -1,26 +1,26 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <Flights>
-  <Timestamp>2024-11-27 14:18:30</Timestamp>
+  <Timestamp>2025-01-02 11:00:42</Timestamp>
   <FlightType>A</FlightType>
   <Flight>
-    <Id>9941</Id>
-    <MovementId>1380633</MovementId>
+    <Id>11964</Id>
+    <MovementId>1393592</MovementId>
     <AircraftId>0</AircraftId>
-    <AircraftTypeId>54</AircraftTypeId>
-    <MovementDatetime>2024-11-27 11:20:00</MovementDatetime>
-    <RouteId>157</RouteId>
+    <AircraftTypeId>5</AircraftTypeId>
+    <MovementDatetime>2025-01-02 10:30:00</MovementDatetime>
+    <RouteId>96</RouteId>
     <AirlineId>19</AirlineId>
-    <FlightId>VJ5471</FlightId>
-    <ScheduledDatetime>2024-11-27 11:20:00</ScheduledDatetime>
+    <FlightId>VJ62</FlightId>
+    <ScheduledDatetime>2025-01-02 10:30:00</ScheduledDatetime>
     <StandId>0</StandId>
-    <CarouselId>4</CarouselId>
+    <CarouselId>5</CarouselId>
     <PaxAdult>0</PaxAdult>
-    <EstimatedTime>2024-11-27 11:46:00</EstimatedTime>
-    <ConfidentTime>2024-11-27 11:46:00</ConfidentTime>
+    <EstimatedTime>2025-01-02 11:00:00</EstimatedTime>
+    <ConfidentTime>2025-01-02 11:00:00</ConfidentTime>
     <PaxChild>0</PaxChild>
     <ConfidentPaxCount>0</ConfidentPaxCount>
     <StatusArr>Arrived</StatusArr>
-    <Qualifier>C - Chartered Passenger</Qualifier>
+    <Qualifier>J - Scheduled Passenger</Qualifier>
     <FirstBagTime>1753-01-01 12:00:00</FirstBagTime>
     <LastBagTime>1753-01-01 12:00:00</LastBagTime>
     <HandlerArr>SAGS</HandlerArr>
@@ -40,7 +40,7 @@
     <NonOperational>0</NonOperational>
     <NonSeasonal>0</NonSeasonal>
     <StandAllocation></StandAllocation>
-    <BatchDate>2024-11-26 21:01:00</BatchDate>
+    <BatchDate>2025-01-01 21:31:00</BatchDate>
     <BaggageLoadTotal>0</BaggageLoadTotal>
     <MovementSourceDataVersion>0</MovementSourceDataVersion>
     <ResponseCode>OK</ResponseCode>
@@ -48,7 +48,9 @@
     <Status_B>0         </Status_B>
     <ModifiMovementId></ModifiMovementId>
     <Status_A>0</Status_A>
-    <CreateDate>2024-11-26 00:27:07.123000</CreateDate>
-    <ResponsedDate>2024-11-27 14:17:34</ResponsedDate>
+    <CreateDate>2025-01-01 00:15:03.673000</CreateDate>
+    <ResponsedDate>2025-01-02 11:00:42</ResponsedDate>
+    <Notification>False</Notification>
+    <SynNotification>True</SynNotification>
   </Flight>
 </Flights>

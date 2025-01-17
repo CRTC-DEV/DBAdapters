@@ -1,34 +1,34 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <Flights>
-  <Timestamp>2024-11-27 15:03:47</Timestamp>
-  <FlightType>B</FlightType>
+  <Timestamp>2025-01-09 15:00:36</Timestamp>
+  <FlightType>D</FlightType>
   <Flight>
-    <MovementId>1395094</MovementId>
+    <MovementId>1387479</MovementId>
     <AircraftId>0</AircraftId>
     <AircraftTypeId>54</AircraftTypeId>
-    <MovementDatetime>2024-11-27 21:45:00</MovementDatetime>
-    <RouteId>66</RouteId>
-    <AirlineId>10</AirlineId>
-    <FlightId>VN440</FlightId>
-    <ScheduledDatetime>2024-11-27 21:45:00</ScheduledDatetime>
+    <MovementDatetime>2025-01-09 10:45:00</MovementDatetime>
+    <RouteId>8</RouteId>
+    <AirlineId>19</AirlineId>
+    <FlightId>VJ5380</FlightId>
+    <ScheduledDatetime>2025-01-09 10:45:00</ScheduledDatetime>
     <StandId>0</StandId>
     <ChuteId>2</ChuteId>
     <GateId>2</GateId>
-    <GateStatus>On Time</GateStatus>
+    <GateStatus>Gate Closed 2</GateStatus>
     <PaxAdult>0</PaxAdult>
     <PaxCount></PaxCount>
     <StatusDep>On Time</StatusDep>
-    <Qualifier>J - Scheduled Passenger</Qualifier>
-    <HandlerDep>AGS</HandlerDep>
+    <Qualifier>C - Chartered Passenger</Qualifier>
+    <HandlerDep>SAGS</HandlerDep>
     <EstimatedTime>1753-01-01 12:00:00</EstimatedTime>
-    <ConfidentTime>2024-11-27 21:45:00</ConfidentTime>
+    <ConfidentTime>2025-01-09 10:45:00</ConfidentTime>
     <PaxChild>0</PaxChild>
     <SuffixId></SuffixId>
     <RemarksDep></RemarksDep>
-    <GateCloseTime>1753-01-01 12:00:00</GateCloseTime>
+    <GateCloseTime>2025-01-09 10:20:00</GateCloseTime>
     <ChocksOn>1753-01-01 12:00:00</ChocksOn>
     <ChocksOff>1753-01-01 12:00:00</ChocksOff>
-    <AllocatedCount>4</AllocatedCount>
+    <AllocatedCount>3</AllocatedCount>
     <PBB1Start>1753-01-01 12:00:00</PBB1Start>
     <PBB1End>1753-01-01 12:00:00</PBB1End>
     <PBB2Start>1753-01-01 12:00:00</PBB2Start>
@@ -39,15 +39,15 @@
     <PaxInfant>0</PaxInfant>
     <NonOperational>0</NonOperational>
     <NonSeasonal>0</NonSeasonal>
-    <StartBoarding>1753-01-01 12:00:00</StartBoarding>
-    <EndBoarding>1753-01-01 12:00:00</EndBoarding>
+    <StartBoarding>2025-01-09 09:57:00</StartBoarding>
+    <EndBoarding>2025-01-09 10:20:00</EndBoarding>
     <StandAllocation></StandAllocation>
     <CallSignId></CallSignId>
     <ConfidentPaxCount>0</ConfidentPaxCount>
     <BaggageLoadTotal>0</BaggageLoadTotal>
     <ChuteChangeLog></ChuteChangeLog>
     <MeastroDCS>False</MeastroDCS>
-    <CounterDetail>T2D-C01, T2D-C02, T2D-C03, T2D-C04</CounterDetail>
+    <CounterDetail>T2C-C06, T2C-C07, T2C-C08</CounterDetail>
     <Status>2</Status>
     <GateCloseTime1>1753-01-01 12:00:00</GateCloseTime1>
     <GateCloseTime2>1753-01-01 12:00:00</GateCloseTime2>
@@ -58,8 +58,8 @@
     <StartRecheckin1>1753-01-01 12:00:00</StartRecheckin1>
     <StartRecheckin2>1753-01-01 12:00:00</StartRecheckin2>
     <RecheckinChangeLog></RecheckinChangeLog>
-    <Id>14852</Id>
-    <BatchDate>2024-11-26 21:01:00</BatchDate>
+    <Id>18034</Id>
+    <BatchDate>2025-01-08 20:48:00</BatchDate>
     <MovementSourceDataVersion>0</MovementSourceDataVersion>
     <Status_B>0         </Status_B>
     <ResponseCode>OK</ResponseCode>
@@ -68,7 +68,10 @@
     <FrontCounter>0</FrontCounter>
     <TransferCounter>0</TransferCounter>
     <GateReBoarding></GateReBoarding>
-    <CreatedDate>2024-11-27 00:27:11.067000</CreatedDate>
-    <ResponsedDate>2024-11-27 15:03:02</ResponsedDate>
+    <CreatedDate>2025-01-08 00:15:22.570000</CreatedDate>
+    <ResponsedDate>2025-01-09 15:00:36</ResponsedDate>
+    <Notification>False</Notification>
+    <SynNotification>True</SynNotification>
+    <ReGateId></ReGateId>
   </Flight>
 </Flights>
