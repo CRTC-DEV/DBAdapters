@@ -24,9 +24,9 @@ class ProcessXmlDirectory extends Command
     {
         parent::__construct();
 
-        $this->directory = storage_path('public\XML\IN');
-        $this->processedDir = storage_path('public\XML\PROCESSED');
-        $this->errorDir = storage_path('public\XML\ERROR');
+        $this->directory = storage_path('public/XML/IN');
+        $this->processedDir = storage_path('public/XML/PROCESSED');
+        $this->errorDir = storage_path('public/XML/ERROR');
 
         $this->ensureDirectoriesExist();
     }
@@ -64,11 +64,11 @@ class ProcessXmlDirectory extends Command
                     // Gọi hàm xử lý XML
                     $this->processXml($file);
                     // Di chuyển file vào thư mục PROCESSED
-                    // File::move($file, $this->processedDir . '/' . $file->getFilename());
+                    File::move($file, $this->processedDir . '/' . $file->getFilename());
                     $this->info('Successfully processed file: ' . $file->getFilename());
                 } catch (\Exception $e) {
                     // Di chuyển file vào thư mục ERROR nếu có lỗi
-                    //File::move($file, $this->errorDir . '/' . $file->getFilename());
+                    File::move($file, $this->errorDir . '/' . $file->getFilename());
                     $this->error('Failed to process file: ' . $file->getFilename() . ' | Error: ' . $e->getMessage());
                 }
             }

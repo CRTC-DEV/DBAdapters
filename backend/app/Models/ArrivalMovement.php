@@ -38,7 +38,8 @@ class ArrivalMovement extends Model
     
     public function updateMovement($data, $movementId)
     {
-        return self::where('MovementId', $movementId)->update($data);
+        return self::where('MovementId', $movementId)        
+        ->update($data);
     }
 
     public function insertMovement($data,$movementId)
@@ -46,7 +47,9 @@ class ArrivalMovement extends Model
         // Kiểm tra ID trùng lặp trước khi insert
         $info='';
         if (isset($movementId)) {
-            $existingRecord = ArrivalMovement::where('MovementId', $movementId)->first();;
+            //update 30/12 check duplication new rule with FlightId and ScheduledDatetime
+            $existingRecord = ArrivalMovement::where('MovementId', $movementId)           
+            ->first();
             if ($existingRecord) {
                 // Nếu ID đã tồn tại, trả về thông báo và update flight
                 ArrivalMovement::updateMovement($data, $movementId);
