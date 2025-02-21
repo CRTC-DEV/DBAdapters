@@ -31,5 +31,7 @@ Route::get('/departuremovement&bydate={date}', [DepartureMovementViewApi::class,
 //Filter FlightMovement By Checkin
 Route::get('/departuremovementbycheckin&selecteddate={date}&checkin={counter}', [DepartureMovementViewApi::class, 'getDepartureMovementByCheckin'])->name('api.departuremovementbycheckin.get');
 
+//API Led
+Route::get('/airlinenameandlogo={date}&checkin={counter}', [DepartureMovementViewApi::class, 'getAirlineNameAndLogo'])->name('api.airlinenameandlogo.get');
 //Route::post('/mapitem', [DepartureMovementViewApi::class, 'postMapItem'])->name('api.map-item.post');
 
