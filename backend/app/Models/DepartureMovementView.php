@@ -60,7 +60,7 @@ class DepartureMovementView extends Model
     {
         $data =  DepartureMovementView::where('DepartureMovement_View.ScheduledDatetime', '>=', $startDate)
         ->where('DepartureMovement_View.ScheduledDatetime', '<=', $endDate) 
-        ->where('DepartureMovement_View.GateStatus', '=', 'Gate Closed') 
+        ->where('DepartureMovement_View.GateStatus', '<>', 'Gate Closed') 
         ->whereRaw('SUBSTRING(DepartureMovement_View.CounterDetail, 3, 1) = ?', [$checkin])
         ->select('DepartureMovement_View.*')
         ->orderBy('DepartureMovement_View.ScheduledDatetime', 'asc')
@@ -76,7 +76,7 @@ class DepartureMovementView extends Model
         $query = DepartureMovementView::query()
             ->where('DepartureMovement_View.ScheduledDatetime', '>=', $startDate)
             ->where('DepartureMovement_View.ScheduledDatetime', '<=', $endDate)
-            ->where('DepartureMovement_View.GateStatus', '=', 'Gate Closed');
+            ->where('DepartureMovement_View.GateStatus', '<>', 'Gate Closed');
 
         $checkinValues = explode(',', $checkin);
         $checkinValues = array_map('trim', $checkinValues);
