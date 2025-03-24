@@ -99,12 +99,14 @@ class DepartureMovementView extends Model
             return [
                 'name' => $item->Airline,
                 'logo' => $logoUrl,
+                'colSpan' => 1,
+                'rowSpan' => 1,
             ];
         });
         // Remove duplicate items
         $result = array_unique(array_map("serialize", $result->toArray()), SORT_STRING);
         $result = array_map("unserialize", $result);
-
+        // dd($result);
         return $result;
     }
 }

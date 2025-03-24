@@ -43,7 +43,7 @@ class DepartureMovementViewApi extends Controller
         $startDate = Carbon::parse($selectedDate)->setTime(4, 0, 0);
         $endDate = Carbon::parse($selectedDate)->addDay()->setTime(3, 59, 59);        
         //dd($startDate,$endDate);
-        // dd(1);
+
         $obj = new DepartureMovementView();
         $items = $obj->getDepartureMovementCheckinAPI($startDate, $endDate, $checkin);        
         return response()->json($items);//As data array
