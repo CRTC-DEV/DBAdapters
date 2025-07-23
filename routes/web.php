@@ -20,8 +20,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::post('/webhook/deploy', DeploymentController::class);
-
 Route::get('/test', [TestController::class, 'index'])->name('test');
 
 Route::get('/run-process-xml', function () {

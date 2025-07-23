@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\ArrivalMovementViewApi;
 use App\Http\Controllers\API\DepartureMovementViewApi;
+use App\Http\Controllers\API\DeploymentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,6 +20,8 @@ use App\Http\Controllers\API\DepartureMovementViewApi;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::post('/webhook/deploy', DeploymentController::class);
 
 //FlightMovement API
 Route::get('/arrivalmovement&selecteddate={date}', [ArrivalMovementViewApi::class, 'getArrivalMovement'])->name('api.arrivalmovement.get');

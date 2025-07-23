@@ -2,7 +2,7 @@
 
 // app/Http/Controllers/DeployController.php
 
-namespace App\Http\Controllers\Deploy;
+namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
