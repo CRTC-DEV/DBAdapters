@@ -10,6 +10,6 @@ class TestController extends Controller
 {
     public function index()
     {
-        dd('This is a test route! testtaadasdasdasd');
+        dd('This is a test route! test 01');
     }
 }
