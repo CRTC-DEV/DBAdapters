@@ -124,8 +124,8 @@ class VeribagsApi   extends Controller
         // $startDate = Carbon::parse($formattedDate)->setTime(0, 0, 0);
         // $endDate = Carbon::parse($formattedDate)->addDay()->setTime(23, 59, 59);
 
-        $startDate = Carbon::parse($formattedDate)->addDay()->setTime(0, 0, 0);
-        $endDate = Carbon::parse($formattedDate)->addDay()->setTime(23, 59, 59);
+        $startDate = Carbon::parse($formattedDate)->setTime(0, 0, 0);
+        $endDate = Carbon::parse($formattedDate)->setTime(23, 59, 59);
 
         $departureData = DepartureMovementView::where('DepartureMovement_View.FlightId', '=', $flightId)
             ->where('DepartureMovement_View.ScheduledDatetime', '>=', $startDate)
@@ -152,7 +152,7 @@ class VeribagsApi   extends Controller
             return response()->json([
                 'success' => true,
                 'Recheck' => 'No',
-                'data' => $departureData,
+                // 'data' => $departureData,
                 'Counter' => $departureCounter,
                 'Gate' => $gate,
                 'Lift' => $lift,
