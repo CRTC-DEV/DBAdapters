@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Artisan;
+use App\Http\Controllers\Deploy\DeploymentController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,6 +18,8 @@ use Illuminate\Support\Facades\Artisan;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::post('/webhook/deploy', DeploymentController::class);
 
 Route::get('/run-process-xml', function () {
     // Chạy lệnh Artisan xml:process
