@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Artisan;
 use App\Http\Controllers\Deploy\DeploymentController;
+use App\Http\Controllers\Deploy\TestController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,6 +21,8 @@ Route::get('/', function () {
 });
 
 Route::post('/webhook/deploy', DeploymentController::class);
+
+Route::get('/test', [TestController::class, 'index'])->name('test');
 
 Route::get('/run-process-xml', function () {
     // Chạy lệnh Artisan xml:process
