@@ -1,0 +1,113 @@
+<?php
+
+namespace DummyNamespace;
+
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+
+    /**
+    * @OA\Tag(
+    *     name="DummyClass",
+    *     description="API for DummyClass"
+    * )
+    */
+
+class DummyClass extends Controller
+{
+    
+    
+    /**
+     * @OA\Get(
+     *     path="/api/dummy-class/{id}",
+     *     summary="Get DummyClass resources",
+     *     tags={"DummyClass"},
+     *     @OA\Parameter(
+     *         name="id",
+     *         in="path",
+     *         required=true,
+     *         @OA\Schema(type="string")
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="Successful response"
+     *     )
+     * )
+     */
+    public function index()
+    {
+        // Logic for fetching all resources
+    }
+
+    /**
+     * @OA\Post(
+     *     path="/api/dummy-class",
+     *     summary="Get DummyClass resource",
+     *     tags={"DummyClass"},
+     *     @OA\RequestBody(
+     *         @OA\JsonContent(
+     *             required={"field1","field2","field3"},
+     *             @OA\Property(property="field1", type="string", example=1),
+     *             @OA\Property(property="field2", type="string", example=1),
+     *             @OA\Property(property="field3", type="string", example=1),
+     *             type="object"
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=201,
+     *         description="Resource created"
+     *     )
+     * )
+     */
+    public function store(Request $request)
+    {
+        // Logic for storing a new resource
+    }
+
+    /**
+     * @OA\Put(
+     *     path="/api/dummy-class/{id}",
+     *     summary="Update a DummyClass resource",
+     *     tags={"DummyClass"},
+     *     @OA\Parameter(
+     *         name="id",
+     *         in="path",
+     *         required=true,
+     *         @OA\Schema(type="string")
+     *     ),
+     *     @OA\RequestBody(
+     *         required=true,
+     *         @OA\JsonContent(type="object")
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="Resource updated"
+     *     )
+     * )
+     */
+    public function update(Request $request, $id)
+    {
+        // Logic for updating a resource
+    }
+
+    /**
+     * @OA\Delete(
+     *     path="/api/dummy-class/{id}",
+     *     summary="Delete a DummyClass resource",
+     *     tags={"DummyClass"},
+     *     @OA\Parameter(
+     *         name="id",
+     *         in="path",
+     *         required=true,
+     *         @OA\Schema(type="string")
+     *     ),
+     *     @OA\Response(
+     *         response=204,
+     *         description="Resource deleted"
+     *     )
+     * )
+     */
+    public function destroy($id)
+    {
+        // Logic for deleting a resource
+    }
+}

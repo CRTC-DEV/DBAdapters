@@ -1,0 +1,290 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "FlightMovement API Documentation",
+        "description": "API documentation for FlightMovement",
+        "contact": {
+            "email": "dev@camranh.aero"
+        },
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "localhost",
+            "description": "Rest API"
+        }
+    ],
+    "paths": {
+        "/api/departureflight/{id}": {
+            "get": {
+                "tags": [
+                    "DepartureFlight"
+                ],
+                "summary": "Get DepartureFlight resources",
+                "operationId": "57382a8e093ab85a0d19ca0945bde291",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "DepartureFlight"
+                ],
+                "summary": "Update a DepartureFlight resource",
+                "operationId": "25480297b2f42cd5cdf79317be51dbf5",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Resource updated"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "DepartureFlight"
+                ],
+                "summary": "Delete a DepartureFlight resource",
+                "operationId": "b57820c66bc6cfb5c73884e5632af14f",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Resource deleted"
+                    }
+                }
+            }
+        },
+        "/api/departureflight": {
+            "post": {
+                "tags": [
+                    "DepartureFlight"
+                ],
+                "summary": "Get DepartureFlight resource",
+                "operationId": "7ce37f3a79441ab5f859b3f187e46459",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "field1",
+                                    "field2",
+                                    "field3"
+                                ],
+                                "properties": {
+                                    "field1": {
+                                        "type": "string",
+                                        "example": 1
+                                    },
+                                    "field2": {
+                                        "type": "string",
+                                        "example": 1
+                                    },
+                                    "field3": {
+                                        "type": "string",
+                                        "example": 1
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Resource created"
+                    }
+                }
+            }
+        },
+        "/api/departureflightsw/{id}": {
+            "get": {
+                "tags": [
+                    "DepartureFlightSW"
+                ],
+                "summary": "Get DepartureFlightSW resources",
+                "operationId": "c977066ec8d1ad5a8cc55eed338f6357",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "DepartureFlightSW"
+                ],
+                "summary": "Update a DepartureFlightSW resource",
+                "operationId": "149f3c2dbde61590eca3eea742b36ee3",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Resource updated"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "DepartureFlightSW"
+                ],
+                "summary": "Delete a DepartureFlightSW resource",
+                "operationId": "9dc142dcb4b09a99e1be753dcc1bf158",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Resource deleted"
+                    }
+                }
+            }
+        },
+        "/api/departureflightsw": {
+            "post": {
+                "tags": [
+                    "DepartureFlightSW"
+                ],
+                "summary": "Get DepartureFlightSW resource",
+                "operationId": "3f3002201da8dda8c3b08d0489eb06a0",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "field1",
+                                    "field2",
+                                    "field3"
+                                ],
+                                "properties": {
+                                    "field1": {
+                                        "type": "string",
+                                        "example": 1
+                                    },
+                                    "field2": {
+                                        "type": "string",
+                                        "example": 1
+                                    },
+                                    "field3": {
+                                        "type": "string",
+                                        "example": 1
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Resource created"
+                    }
+                }
+            }
+        },
+        "/api/users": {
+            "get": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Get all users",
+                "operationId": "d984437c865fbc5f63f68a37064e9d7d",
+                "responses": {
+                    "200": {
+                        "description": "Successful response"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    }
+                }
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "DepartureFlight",
+            "description": "API for DepartureFlight"
+        },
+        {
+            "name": "DepartureFlightSW",
+            "description": "API for DepartureFlightSW"
+        },
+        {
+            "name": "Users",
+            "description": "Users"
+        }
+    ]
+}

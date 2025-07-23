@@ -1,0 +1,57 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<Flights>
+  <Timestamp>2025-02-28 07:09:19</Timestamp>
+  <FlightType>A</FlightType>
+  <Flight>
+    <Id>16069</Id>
+    <MovementId>1401281</MovementId>
+    <AircraftId>4212</AircraftId>
+    <AircraftTypeId>6</AircraftTypeId>
+    <MovementDatetime>2025-02-27 12:40:00</MovementDatetime>
+    <RouteId>304</RouteId>
+    <AirlineId>1</AirlineId>
+    <FlightId>ZZ7566</FlightId>
+    <ScheduledDatetime>2025-02-27 12:40:00</ScheduledDatetime>
+    <StandId>0</StandId>
+    <CarouselId>8</CarouselId>
+    <PaxAdult>139</PaxAdult>
+    <EstimatedTime>1753-01-01 12:00:00</EstimatedTime>
+    <ConfidentTime>2025-02-27 12:28:00</ConfidentTime>
+    <PaxChild>5</PaxChild>
+    <ConfidentPaxCount>145</ConfidentPaxCount>
+    <StatusArr>Arrived</StatusArr>
+    <Qualifier>D - General or Private Aviation</Qualifier>
+    <FirstBagTime>2025-02-27 12:56:00</FirstBagTime>
+    <LastBagTime>2025-02-27 13:10:00</LastBagTime>
+    <HandlerArr>SAGS</HandlerArr>
+    <CallSignId>##KA7777</CallSignId>
+    <SuffixId></SuffixId>
+    <RemarksArr></RemarksArr>
+    <PBB1Start>1753-01-01 12:00:00</PBB1Start>
+    <PBB1End>1753-01-01 12:00:00</PBB1End>
+    <PBB2Start>1753-01-01 12:00:00</PBB2Start>
+    <PBB2End>1753-01-01 12:00:00</PBB2End>
+    <PBB3Start>1753-01-01 12:00:00</PBB3Start>
+    <PBB3End>1753-01-01 12:00:00</PBB3End>
+    <ChocksOn>1753-01-01 12:00:00</ChocksOn>
+    <ChocksOff>1753-01-01 12:00:00</ChocksOff>
+    <CarouselChangeLog></CarouselChangeLog>
+    <PaxInfant>1</PaxInfant>
+    <NonOperational>0</NonOperational>
+    <NonSeasonal>1</NonSeasonal>
+    <StandAllocation></StandAllocation>
+    <BatchDate>2025-02-28 05:48:00</BatchDate>
+    <BaggageLoadTotal>1407</BaggageLoadTotal>
+    <MovementSourceDataVersion>1407</MovementSourceDataVersion>
+    <ResponseCode>OK</ResponseCode>
+    <Status>2</Status>
+    <Status_B>0         </Status_B>
+    <ModifiMovementId></ModifiMovementId>
+    <Status_A>0</Status_A>
+    <CreateDate>2025-02-26 17:09:11.113000</CreateDate>
+    <ResponsedDate>2025-02-28 07:09:17</ResponsedDate>
+    <Notification>False</Notification>
+    <SynNotification>True</SynNotification>
+    <ReCarouselId>0</ReCarouselId>
+  </Flight>
+</Flights>

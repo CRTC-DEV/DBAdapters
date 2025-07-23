@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<TagRechecks>
+  <Timestamp>2025-04-03 10:18:40</Timestamp>
+  <FlightType>D</FlightType>
+  <TagRecheck>
+    <Id>129</Id>
+    <FlightId>VJ990</FlightId>
+    <ScheduledDatetime>2025-03-29 00:05:00</ScheduledDatetime>
+    <NamePassenger>JO MIRIMS</NamePassenger>
+    <SeatNumber>15B</SeatNumber>
+    <TagNumber>0523026066</TagNumber>
+    <RecheckDatetime>2025-03-28 09:53:29.617000</RecheckDatetime>
+    <DeviceTypeRecheck>1</DeviceTypeRecheck>
+    <Status>1</Status>
+    <RouteName>PUS</RouteName>
+    <HandlerDep>SAGS</HandlerDep>
+    <CounterDetail>H1,H2,H3</CounterDetail>
+    <CheckinDatetime>2025-03-27 07:14:01</CheckinDatetime>
+    <ModifyDatetime></ModifyDatetime>
+    <FinishedDatetime></FinishedDatetime>
+    <Description></Description>
+    <BSMDataId></BSMDataId>
+    <DepartureMovementId>1415053</DepartureMovementId>
+    <IsDelete>0</IsDelete>
+    <IsBsm>1</IsBsm>
+    <IsKorea>0</IsKorea>
+    <City>BUSAN</City>
+    <Noted>999</Noted>
+  </TagRecheck>
+</TagRechecks>
