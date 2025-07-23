@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<Messages>
+  <Timestamp>20241116_102611<Root xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <ArrivalMovements>
+    <Type>1</Type>
+    <OperationType>INSERT</OperationType>
+    <FlightType>A</FlightType>
+    <ArrivalMovement>
+      <Id>9438</Id>
+      <MovementId>1392856</MovementId>
+      <AircraftId>0</AircraftId>
+      <AircraftTypeId>408</AircraftTypeId>
+      <MovementDatetime>2024-11-17T01:35:00</MovementDatetime>
+      <RouteId>66</RouteId>
+      <AirlineId>3</AirlineId>
+      <FlightId>7C4907</FlightId>
+      <ScheduledDatetime>2024-11-17T01:35:00</ScheduledDatetime>
+      <StandId>15</StandId>
+      <CarouselId>5</CarouselId>
+      <PaxAdult>0</PaxAdult>
+      <EstimatedTime>1753-01-01T12:00:00</EstimatedTime>
+      <ConfidentTime>2024-11-17T01:35:00</ConfidentTime>
+      <PaxChild>0</PaxChild>
+      <ConfidentPaxCount>0</ConfidentPaxCount>
+      <StatusArr>On Time</StatusArr>
+      <Qualifier>J - Scheduled Passenger</Qualifier>
+      <FirstBagTime>1753-01-01T12:00:00</FirstBagTime>
+      <LastBagTime>1753-01-01T12:00:00</LastBagTime>
+      <HandlerArr>AGS</HandlerArr>
+      <PBB1Start>1753-01-01T12:00:00</PBB1Start>
+      <PBB1End>1753-01-01T12:00:00</PBB1End>
+      <PBB2Start>1753-01-01T12:00:00</PBB2Start>
+      <PBB2End>1753-01-01T12:00:00</PBB2End>
+      <PBB3Start>1753-01-01T12:00:00</PBB3Start>
+      <PBB3End>1753-01-01T12:00:00</PBB3End>
+      <ChocksOn>1753-01-01T12:00:00</ChocksOn>
+      <ChocksOff>1753-01-01T12:00:00</ChocksOff>
+      <PaxInfant>0</PaxInfant>
+      <NonOperational>0</NonOperational>
+      <NonSeasonal>0</NonSeasonal>
+      <StandAllocation>S36</StandAllocation>
+      <BatchDate>2024-11-15T20:35:00</BatchDate>
+      <BaggageLoadTotal>0</BaggageLoadTotal>
+      <MovementSourceDataVersion>0</MovementSourceDataVersion>
+      <ResponseCode>OK</ResponseCode>
+      <Status>2</Status>
+      <Status_B>CLS       </Status_B>
+      <Status_A>0</Status_A>
+      <ResponsedDate>2024-11-16T10:15:22</ResponsedDate>
+      <CreateDate>2024-11-16T00:32:40.083</CreateDate>
+    </ArrivalMovement>
+  </ArrivalMovements>
+</Root></Timestamp>
+</Messages>
