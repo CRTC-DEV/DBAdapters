@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<Flights>
+  <Timestamp>2024-12-03 23:33:48</Timestamp>
+  <FlightType>A</FlightType>
+  <Flight>
+    <Id>10302</Id>
+    <MovementId>1395353</MovementId>
+    <AircraftId>2294</AircraftId>
+    <AircraftTypeId>82</AircraftTypeId>
+    <MovementDatetime>2024-12-03 22:40:00</MovementDatetime>
+    <RouteId>181</RouteId>
+    <AirlineId>67</AirlineId>
+    <FlightId>LJ115</FlightId>
+    <ScheduledDatetime>2024-12-03 22:40:00</ScheduledDatetime>
+    <StandId>16</StandId>
+    <CarouselId>8</CarouselId>
+    <PaxAdult>128</PaxAdult>
+    <EstimatedTime>2024-12-03 22:23:00</EstimatedTime>
+    <ConfidentTime>2024-12-03 22:23:00</ConfidentTime>
+    <PaxChild>24</PaxChild>
+    <ConfidentPaxCount>154</ConfidentPaxCount>
+    <StatusArr>Arrived</StatusArr>
+    <Qualifier>J - Scheduled Passenger</Qualifier>
+    <FirstBagTime>1753-01-01 12:00:00</FirstBagTime>
+    <LastBagTime>1753-01-01 12:00:00</LastBagTime>
+    <HandlerArr>SAGS</HandlerArr>
+    <CallSignId></CallSignId>
+    <SuffixId></SuffixId>
+    <RemarksArr></RemarksArr>
+    <PBB1Start>1753-01-01 12:00:00</PBB1Start>
+    <PBB1End>1753-01-01 12:00:00</PBB1End>
+    <PBB2Start>1753-01-01 12:00:00</PBB2Start>
+    <PBB2End>1753-01-01 12:00:00</PBB2End>
+    <PBB3Start>1753-01-01 12:00:00</PBB3Start>
+    <PBB3End>1753-01-01 12:00:00</PBB3End>
+    <ChocksOn>1753-01-01 12:00:00</ChocksOn>
+    <ChocksOff>1753-01-01 12:00:00</ChocksOff>
+    <CarouselChangeLog></CarouselChangeLog>
+    <PaxInfant>2</PaxInfant>
+    <NonOperational>0</NonOperational>
+    <NonSeasonal>0</NonSeasonal>
+    <StandAllocation>S34</StandAllocation>
+    <BatchDate>2024-12-03 22:44:00</BatchDate>
+    <BaggageLoadTotal>1361</BaggageLoadTotal>
+    <MovementSourceDataVersion>1361</MovementSourceDataVersion>
+    <ResponseCode>OK</ResponseCode>
+    <Status>2</Status>
+    <Status_B>0         </Status_B>
+    <ModifiMovementId></ModifiMovementId>
+    <Status_A>0</Status_A>
+    <CreateDate>2024-12-03 00:00:02.353000</CreateDate>
+    <ResponsedDate>2024-12-03 23:33:47</ResponsedDate>
+  </Flight>
+</Flights>

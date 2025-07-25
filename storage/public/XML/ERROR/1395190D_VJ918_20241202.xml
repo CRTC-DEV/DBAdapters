@@ -1,0 +1,74 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<Flights>
+  <Timestamp>2024-12-02 02:32:49</Timestamp>
+  <FlightType>D</FlightType>
+  <Flight>
+    <MovementId>1395190</MovementId>
+    <AircraftId>0</AircraftId>
+    <AircraftTypeId>54</AircraftTypeId>
+    <MovementDatetime>2024-12-02 03:25:00</MovementDatetime>
+    <RouteId>181</RouteId>
+    <AirlineId>19</AirlineId>
+    <FlightId>VJ918</FlightId>
+    <ScheduledDatetime>2024-12-02 03:25:00</ScheduledDatetime>
+    <StandId>0</StandId>
+    <ChuteId>3</ChuteId>
+    <GateId>12</GateId>
+    <GateStatus>Boarding</GateStatus>
+    <PaxAdult>0</PaxAdult>
+    <PaxCount></PaxCount>
+    <StatusDep>On Time</StatusDep>
+    <Qualifier>J - Scheduled Passenger</Qualifier>
+    <HandlerDep>SAGS</HandlerDep>
+    <EstimatedTime>1753-01-01 12:00:00</EstimatedTime>
+    <ConfidentTime>2024-12-02 03:25:00</ConfidentTime>
+    <PaxChild>0</PaxChild>
+    <SuffixId></SuffixId>
+    <RemarksDep></RemarksDep>
+    <GateCloseTime>1753-01-01 12:00:00</GateCloseTime>
+    <ChocksOn>1753-01-01 12:00:00</ChocksOn>
+    <ChocksOff>1753-01-01 12:00:00</ChocksOff>
+    <AllocatedCount>3</AllocatedCount>
+    <PBB1Start>1753-01-01 12:00:00</PBB1Start>
+    <PBB1End>1753-01-01 12:00:00</PBB1End>
+    <PBB2Start>1753-01-01 12:00:00</PBB2Start>
+    <PBB2End>1753-01-01 12:00:00</PBB2End>
+    <PBB3Start>1753-01-01 12:00:00</PBB3Start>
+    <PBB3End>1753-01-01 12:00:00</PBB3End>
+    <GateChangeLog></GateChangeLog>
+    <PaxInfant>0</PaxInfant>
+    <NonOperational>0</NonOperational>
+    <NonSeasonal>1</NonSeasonal>
+    <StartBoarding>2024-12-02 02:34:00</StartBoarding>
+    <EndBoarding>1753-01-01 12:00:00</EndBoarding>
+    <StandAllocation></StandAllocation>
+    <CallSignId></CallSignId>
+    <ConfidentPaxCount>0</ConfidentPaxCount>
+    <BaggageLoadTotal>0</BaggageLoadTotal>
+    <ChuteChangeLog></ChuteChangeLog>
+    <MeastroDCS>False</MeastroDCS>
+    <CounterDetail>T2H-C01, T2H-C02, T2H-C03</CounterDetail>
+    <Status>2</Status>
+    <GateCloseTime1>1753-01-01 12:00:00</GateCloseTime1>
+    <GateCloseTime2>1753-01-01 12:00:00</GateCloseTime2>
+    <StartBoarding1>1753-01-01 12:00:00</StartBoarding1>
+    <StartBoarding2>1753-01-01 12:00:00</StartBoarding2>
+    <EndBoarding1>1753-01-01 12:00:00</EndBoarding1>
+    <EndBoarding2>1753-01-01 12:00:00</EndBoarding2>
+    <StartRecheckin1>1753-01-01 12:00:00</StartRecheckin1>
+    <StartRecheckin2>1753-01-01 12:00:00</StartRecheckin2>
+    <RecheckinChangeLog></RecheckinChangeLog>
+    <Id>15134</Id>
+    <BatchDate>2024-11-30 20:42:00</BatchDate>
+    <MovementSourceDataVersion>0</MovementSourceDataVersion>
+    <Status_B>0         </Status_B>
+    <ResponseCode>OK</ResponseCode>
+    <ModifiMovementId></ModifiMovementId>
+    <Status_A>0</Status_A>
+    <FrontCounter>0</FrontCounter>
+    <TransferCounter>0</TransferCounter>
+    <GateReBoarding></GateReBoarding>
+    <CreatedDate>2024-12-01 00:59:54.430000</CreatedDate>
+    <ResponsedDate>2024-12-02 02:32:48</ResponsedDate>
+  </Flight>
+</Flights>
