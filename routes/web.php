@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Artisan;
 use App\Http\Controllers\Deploy\DeploymentController;
 use App\Http\Controllers\Deploy\TestController;
+use App\Http\Controllers\SwaggerController;
 
 /*
 |--------------------------------------------------------------------------
