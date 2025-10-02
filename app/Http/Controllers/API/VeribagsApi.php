@@ -133,7 +133,7 @@ class VeribagsApi extends Controller
 
         // Combine airline and flight number to get FlightId
         $trimmedFlightNumber = preg_match('/^0/', $flightNumber)
-        ? (ltrim($flightNumber, '0') !== '' ? ltrim($flightNumber, '0') : '0')
+        ? (ltrim($flightNumber, '0') !== '' ? preg_replace('/^0/', '', $flightNumber, 1) : '0')
         : $flightNumber;
         
         $flightId = $airline . $trimmedFlightNumber;
@@ -224,6 +224,7 @@ class VeribagsApi extends Controller
             ->where('ScheduledDatetime', '>=', $startDate)
             ->where('ScheduledDatetime', '<=', $endDate)
             ->first();
+
         if ($departureData) {
             // Extract counter letter from CounterDetail
             $departureCounter = null;
@@ -235,6 +236,17 @@ class VeribagsApi extends Controller
                     // Fallback: extract first letter if no dash found
                     $departureCounter = preg_match('/^([A-Za-z])/', $departureData['CounterDetail'], $matches) ? $matches[1] : $departureData['CounterDetail'];
                 }
+            }
+            $gate = preg_match('/^[^-]*-(.*)$/', explode(',', $departureData['Gate'])[0], $matches) ? $matches[1] : $departureData['Gate'];
+            $lift = '';
+            if ($gate == 'G01' || $gate == 'G02' || $gate == 'G03') {
+                $lift = 'L1.2.3';
+            } elseif ($gate == 'G08' || $gate == 'G09' || $gate == 'G10') {
+                $lift = 'L8.9.10';
+            } elseif ($gate == 'G04' || $gate == 'G05') {
+                $lift = 'L4.5';
+            } elseif ($gate == 'G06' || $gate == 'G07') {
+                $lift = 'L6.7';
             }
 
             // Define messages for "No recheck needed" in different languages
@@ -253,6 +265,8 @@ class VeribagsApi extends Controller
                 'Recheck' => 'No',
                 'data' => $departureData,
                 'Counter' => $departureCounter,
+                'Gate' => $gate,
+                'Lift' => $lift,
                 'message' => $message
             ]);
         }
