@@ -223,6 +223,7 @@ class VeribagsApi extends Controller
         $departureData = DepartureMovementView::where('FlightId', $flightId)
             ->where('ScheduledDatetime', '>=', $startDate)
             ->where('ScheduledDatetime', '<=', $endDate)
+            ->where('Status', '<>', '3')
             ->first();
 
         if ($departureData) {
