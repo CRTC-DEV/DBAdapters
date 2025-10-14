@@ -141,10 +141,13 @@ class VeribagsApi extends Controller
         // Combine airline and flight number to get FlightId
         $trimmedFlightNumber1Zero = (ltrim($flightNumber, '0') !== '' ? preg_replace('/^0/', '', $flightNumber, 1) : '0');
         $trimmedFlightNumber2Zero = (ltrim($flightNumber, '0') !== '' ? preg_replace('/^00/', '', $flightNumber, 1) : '0');
+        $trimmedFlightNumber3Zero = (ltrim($flightNumber, '0') !== '' ? preg_replace('/^000/', '', $flightNumber, 1) : '0');
 
+        //check in 4 cases possible flight number
         $trimmedFlightNumber = DepartureMovementView::where('FlightId', $airline . $flightNumber)
         ->orwhere('FlightId', $airline . $trimmedFlightNumber1Zero)
         ->orwhere('FlightId', $airline . $trimmedFlightNumber2Zero)
+        ->orwhere('FlightId', $airline . $trimmedFlightNumber3Zero)
         ->where('ScheduledDatetime', '>=', $startDate)
         ->where('ScheduledDatetime', '<=', $endDate)
         ->where('Status', '<>', '3')
