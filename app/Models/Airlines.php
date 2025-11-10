@@ -34,7 +34,21 @@ class Airlines extends Model
      */
     public function getActiveAirlines()
     {
-        return self::where('Status', 1)
+        return self::where('Status', 2)
+            ->orderBy('Name', 'asc')
+            ->get();
+    }
+
+    /**
+     * Get all inactive airlines
+     */
+    public function searchAirlines($keyword)
+    {
+        return self::where('Status', 2)
+            ->where(function($query) use ($keyword) {
+                $query->where('Name', 'like', "%{$keyword}%")
+                      ->orWhere('IcaoCode', 'like', "%{$keyword}%");
+            })
             ->orderBy('Name', 'asc')
             ->get();
     }

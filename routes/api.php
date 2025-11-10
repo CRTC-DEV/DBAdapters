@@ -67,8 +67,10 @@ Route::patch('/tag-recheck/{id}/finish', [TagRecheckApi::class, 'finishTagRechec
 // Airlines API
 Route::get('/airlines', [AirlinesApi::class, 'getActiveAirlines'])->name('api.airlines.get');
 Route::get('/airlines/iata/{iataCode}', [AirlinesApi::class, 'getAirlineByIataCode'])->name('api.airlines.iata.get');
+Route::get('/airlines/search', [AirlinesApi::class, 'searchAirlines'])->name('api.airlines.search');
 Route::post('/airlines', [AirlinesApi::class, 'createAirline'])->name('api.airlines.post');
 Route::put('/airlines/{airlineId}', [AirlinesApi::class, 'updateAirline'])->name('api.airlines.put');
+
 
 // Aircrafts API
 Route::get('/aircrafts', [AircraftsApi::class, 'getActiveAircrafts'])->name('api.aircrafts.get');

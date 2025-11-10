@@ -289,4 +289,52 @@ class AirlinesApi extends Controller
             ], 500);
         }
     }
+
+    /**
+     * @OA\Get(
+     *     path="/airlines/search",
+     *     summary="Search airlines",
+     *     description="Search airlines by name or ICAO code",
+     *     tags={"Airlines"},
+     *     @OA\Parameter(
+     *         name="keyword",
+     *         in="query",
+     *         required=true,
+     *         description="Search keyword (name or ICAO code)",
+     *         @OA\Schema(type="string", example="Vietnam")
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="Search results",
+     *         @OA\JsonContent(
+     *             @OA\Property(property="success", type="boolean", example=true),
+     *             @OA\Property(property="data", type="array", @OA\Items(
+     *                 @OA\Property(property="AirlineId", type="integer", example=1),
+     *                 @OA\Property(property="Name", type="string", example="Vietnam Airlines"),
+     *                 @OA\Property(property="IataCode", type="string", example="VN"),
+     *                 @OA\Property(property="IcaoCode", type="string", example="HVN")
+     *             )),
+     *             @OA\Property(property="count", type="integer", example=3)
+     *         )
+     *     )
+     * )
+     */
+    public function searchAirlines(Request $request)
+    {
+        try {
+            $keyword = $request->query('keyword', '');
+            $obj = new Airlines();
+            $items = $obj->searchAirlines($keyword);
+            return response()->json([
+                'success' => true,
+                'data' => $items,
+                'count' => $items->count()
+            ]);
+        } catch (\Exception $e) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Error searching airlines: ' . $e->getMessage()
+            ], 500);
+        }
+    }
 }
