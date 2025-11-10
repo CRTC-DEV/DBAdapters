@@ -20,7 +20,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-
 Route::get('/run-process-xml', function () {
     // Chạy lệnh Artisan xml:process
     Artisan::call('xml:process-directory');

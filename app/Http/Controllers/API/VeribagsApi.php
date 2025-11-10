@@ -131,11 +131,46 @@ class VeribagsApi extends Controller
             ], 400);
         }
 
-        // Combine airline and flight number to get FlightId
-        $flightId = $airline . $flightNumber;
-
         // Format date for database query
         $formattedDate = Carbon::parse($flightDate)->format('Y-m-d');
+
+        // If not found in TagRecheck, check DepartureMovementView
+        $startDate = Carbon::parse($formattedDate)->setTime(0, 0, 0);
+        $endDate = Carbon::parse($formattedDate)->setTime(23, 59, 59);
+
+        // Combine airline and flight number to get FlightId
+        $trimmedFlightNumber1Zero = (ltrim($flightNumber, '0') !== '' ? preg_replace('/^0/', '', $flightNumber, 1) : '0');
+        $trimmedFlightNumber2Zero = (ltrim($flightNumber, '0') !== '' ? preg_replace('/^00/', '', $flightNumber, 1) : '0');
+        $trimmedFlightNumber3Zero = (ltrim($flightNumber, '0') !== '' ? preg_replace('/^000/', '', $flightNumber, 1) : '0');
+
+        //check in 4 cases possible flight number
+        $trimmedFlightNumber = DepartureMovementView::where('FlightId', $airline . $flightNumber)
+        ->orwhere('FlightId', $airline . $trimmedFlightNumber1Zero)
+        ->orwhere('FlightId', $airline . $trimmedFlightNumber2Zero)
+        ->orwhere('FlightId', $airline . $trimmedFlightNumber3Zero)
+        ->where('ScheduledDatetime', '>=', $startDate)
+        ->where('ScheduledDatetime', '<=', $endDate)
+        ->where('Status', '<>', '3')
+        ->first();
+
+        if(!$trimmedFlightNumber){
+            // If no data found in either source
+            $notFoundMessages = [
+                'EN' => 'No matching records found for the provided barcode data',
+                'VI' => 'Không tìm thấy dữ liệu phù hợp với mã vạch được cung cấp',
+                'KO' => '제공된 바코드 데이터에 대한 일치하는 기록을 찾을 수 없습니다',
+                'ZH' => '找不到与提供的条形码数据相匹配的记录'
+            ];
+
+            $message = $notFoundMessages[$languageCode] ?? $notFoundMessages['EN'];
+
+            return response()->json([
+                'success' => false,
+                'message' => $message
+            ], 404);
+        }
+
+        $flightId = $trimmedFlightNumber->FlightId;
 
         // First check if there's a record in TagRecheck
         $query = TagRecheck::where('FlightId', $flightId)
@@ -212,15 +247,12 @@ class VeribagsApi extends Controller
             ]);
         }
 
-        // If not found in TagRecheck, check DepartureMovementView
-        $startDate = Carbon::parse($formattedDate)->setTime(0, 0, 0);
-        $endDate = Carbon::parse($formattedDate)->setTime(23, 59, 59);
-
         $departureData = DepartureMovementView::where('FlightId', $flightId)
             ->where('ScheduledDatetime', '>=', $startDate)
             ->where('ScheduledDatetime', '<=', $endDate)
+            ->where('Status', '<>', '3')
             ->first();
-        dd($flightId);
+
         if ($departureData) {
             // Extract counter letter from CounterDetail
             $departureCounter = null;
@@ -232,6 +264,17 @@ class VeribagsApi extends Controller
                     // Fallback: extract first letter if no dash found
                     $departureCounter = preg_match('/^([A-Za-z])/', $departureData['CounterDetail'], $matches) ? $matches[1] : $departureData['CounterDetail'];
                 }
+            }
+            $gate = preg_match('/^[^-]*-(.*)$/', explode(',', $departureData['Gate'])[0], $matches) ? $matches[1] : $departureData['Gate'];
+            $lift = '';
+            if ($gate == 'G01' || $gate == 'G02' || $gate == 'G03') {
+                $lift = 'L1.2.3';
+            } elseif ($gate == 'G08' || $gate == 'G09' || $gate == 'G10') {
+                $lift = 'L8.9.10';
+            } elseif ($gate == 'G04' || $gate == 'G05') {
+                $lift = 'L4.5';
+            } elseif ($gate == 'G06' || $gate == 'G07') {
+                $lift = 'L6.7';
             }
 
             // Define messages for "No recheck needed" in different languages
@@ -250,6 +293,8 @@ class VeribagsApi extends Controller
                 'Recheck' => 'No',
                 'data' => $departureData,
                 'Counter' => $departureCounter,
+                'Gate' => $gate,
+                'Lift' => $lift,
                 'message' => $message
             ]);
         }

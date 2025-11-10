@@ -1,0 +1,58 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<Flights>
+  <Timestamp>2025-06-11 01:21:05</Timestamp>
+  <FlightType>A</FlightType>
+  <Flight>
+    <Id>21774</Id>
+    <MovementId>1394016</MovementId>
+    <AircraftId>3108</AircraftId>
+    <AircraftTypeId>54</AircraftTypeId>
+    <MovementDatetime>2025-06-10 09:45:00</MovementDatetime>
+    <RouteId>66</RouteId>
+    <AirlineId>10</AirlineId>
+    <FlightId>VN441</FlightId>
+    <ScheduledDatetime>2025-06-10 09:45:00</ScheduledDatetime>
+    <StandId>0</StandId>
+    <CarouselId>3</CarouselId>
+    <PaxAdult>142</PaxAdult>
+    <EstimatedTime>1753-01-01 12:00:00</EstimatedTime>
+    <ConfidentTime>2025-06-10 09:54:00</ConfidentTime>
+    <PaxChild>27</PaxChild>
+    <ConfidentPaxCount>172</ConfidentPaxCount>
+    <StatusArr>Arrived</StatusArr>
+    <Qualifier>J - Scheduled Passenger</Qualifier>
+    <FirstBagTime>2025-06-10 10:16:00</FirstBagTime>
+    <LastBagTime>2025-06-10 10:45:00</LastBagTime>
+    <HandlerArr>AGS</HandlerArr>
+    <CallSignId></CallSignId>
+    <SuffixId></SuffixId>
+    <RemarksArr></RemarksArr>
+    <PBB1Start>1753-01-01 12:00:00</PBB1Start>
+    <PBB1End>1753-01-01 12:00:00</PBB1End>
+    <PBB2Start>1753-01-01 12:00:00</PBB2Start>
+    <PBB2End>1753-01-01 12:00:00</PBB2End>
+    <PBB3Start>1753-01-01 12:00:00</PBB3Start>
+    <PBB3End>1753-01-01 12:00:00</PBB3End>
+    <ChocksOn>1753-01-01 12:00:00</ChocksOn>
+    <ChocksOff>1753-01-01 12:00:00</ChocksOff>
+    <CarouselChangeLog></CarouselChangeLog>
+    <PaxInfant>3</PaxInfant>
+    <NonOperational>0</NonOperational>
+    <NonSeasonal>0</NonSeasonal>
+    <StandAllocation></StandAllocation>
+    <BatchDate>2025-06-10 20:42:00</BatchDate>
+    <BaggageLoadTotal>2872</BaggageLoadTotal>
+    <MovementSourceDataVersion>2872</MovementSourceDataVersion>
+    <ResponseCode>OK</ResponseCode>
+    <Status>2</Status>
+    <Status_B>0         </Status_B>
+    <ModifiMovementId></ModifiMovementId>
+    <Status_A>0</Status_A>
+    <CreateDate>2025-06-09 00:35:44.957000</CreateDate>
+    <ResponsedDate>2025-06-11 01:21:04</ResponsedDate>
+    <Notification>False</Notification>
+    <SynNotification>True</SynNotification>
+    <ReCarouselId>0</ReCarouselId>
+    <RemarkChange>Belt,Etime,AcRegNo,Adl,Chd,Inf,TotalPax,</RemarkChange>
+  </Flight>
+</Flights>
