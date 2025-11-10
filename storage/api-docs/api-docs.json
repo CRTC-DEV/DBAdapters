@@ -1,0 +1,3899 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "FlightMovement API Documentation",
+        "description": "API documentation for FlightMovement",
+        "contact": {
+            "email": "dev@camranh.aero"
+        },
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+
+            "url": "http://localhost:8000/api",
+            "description": "Rest API"
+        }
+    ],
+    "paths": {
+        "/aircraft-types": {
+            "get": {
+                "tags": [
+                    "Aircraft Types"
+                ],
+                "summary": "Get all active aircraft types",
+                "description": "Retrieve all active aircraft types ordered by name",
+                "operationId": "d98c56d18bd93dae722aa8d6e75161aa",
+                "responses": {
+                    "200": {
+                        "description": "Aircraft types retrieved successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean",
+                                            "example": true
+                                        },
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "AircraftTypeId": {
+                                                        "type": "integer",
+                                                        "example": 1
+                                                    },
+                                                    "Name": {
+                                                        "type": "string",
+                                                        "example": "Airbus A321"
+                                                    },
+                                                    "IataCode": {
+                                                        "type": "string",
+                                                        "example": "321"
+                                                    },
+                                                    "IcaoCode": {
+                                                        "type": "string",
+                                                        "example": "A321"
+                                                    },
+                                                    "MaxPax": {
+                                                        "type": "integer",
+                                                        "example": 220
+                                                    },
+                                                    "Mtow": {
+                                                        "type": "integer",
+                                                        "example": 93500
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        },
+                                        "count": {
+                                            "type": "integer",
+                                            "example": 25
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Aircraft Types"
+                ],
+                "summary": "Create new aircraft type",
+                "description": "Create a new aircraft type with the provided information",
+                "operationId": "8cdeb9dffa4162360d6efd7a5a90e5d2",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "AircraftTypeId",
+                                    "Name"
+                                ],
+                                "properties": {
+                                    "AircraftTypeId": {
+                                        "description": "Unique aircraft type ID",
+                                        "type": "integer",
+                                        "example": 1
+                                    },
+                                    "Name": {
+                                        "description": "Aircraft type name",
+                                        "type": "string",
+                                        "example": "Airbus A321"
+                                    },
+                                    "IataCode": {
+                                        "description": "IATA code",
+                                        "type": "string",
+                                        "example": "321"
+                                    },
+                                    "IcaoCode": {
+                                        "description": "ICAO code",
+                                        "type": "string",
+                                        "example": "A321"
+                                    },
+                                    "MaxPax": {
+                                        "description": "Maximum passengers",
+                                        "type": "integer",
+                                        "example": 220
+                                    },
+                                    "Mtow": {
+                                        "description": "Maximum takeoff weight",
+                                        "type": "integer",
+                                        "example": 93500
+                                    },
+                                    "Status": {
+                                        "description": "Status (0=inactive, 1=active)",
+                                        "type": "integer",
+                                        "example": 1
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Aircraft type created successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean",
+                                            "example": true
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Aircraft type created successfully"
+                                        },
+                                        "data": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean",
+                                            "example": false
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Validation error"
+                                        },
+                                        "errors": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/aircraft-types/{aircraftTypeId}": {
+            "put": {
+                "tags": [
+                    "Aircraft Types"
+                ],
+                "summary": "Update aircraft type",
+                "description": "Update an existing aircraft type by ID",
+                "operationId": "06580f0b0ff64d6d862a6ce723c32924",
+                "parameters": [
+                    {
+                        "name": "aircraftTypeId",
+                        "in": "path",
+                        "description": "Aircraft type ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "Name": {
+                                        "description": "Aircraft type name",
+                                        "type": "string",
+                                        "example": "Airbus A321 Neo"
+                                    },
+                                    "IataCode": {
+                                        "description": "IATA code",
+                                        "type": "string",
+                                        "example": "32Q"
+                                    },
+                                    "IcaoCode": {
+                                        "description": "ICAO code",
+                                        "type": "string",
+                                        "example": "A21N"
+                                    },
+                                    "MaxPax": {
+                                        "description": "Maximum passengers",
+                                        "type": "integer",
+                                        "example": 230
+                                    },
+                                    "Mtow": {
+                                        "description": "Maximum takeoff weight",
+                                        "type": "integer",
+                                        "example": 97000
+                                    },
+                                    "Status": {
+                                        "description": "Status (0=inactive, 1=active)",
+                                        "type": "integer",
+                                        "example": 1
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Aircraft type updated successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean",
+                                            "example": true
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Aircraft type updated successfully"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Aircraft type not found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean",
+                                            "example": false
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Aircraft type not found"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/aircrafts": {
+            "get": {
+                "tags": [
+                    "Aircrafts"
+                ],
+                "summary": "Get all active aircrafts",
+                "description": "Retrieve all active aircrafts ordered by registration",
+                "operationId": "e60db6abb3ab423ff473d4b32cbd8877",
+                "responses": {
+                    "200": {
+                        "description": "Aircrafts retrieved successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean",
+                                            "example": true
+                                        },
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "AircraftId": {
+                                                        "type": "integer",
+                                                        "example": 1
+                                                    },
+                                                    "Registration": {
+                                                        "type": "string",
+                                                        "example": "VN-A321"
+                                                    },
+                                                    "AircraftTypeId": {
+                                                        "type": "integer",
+                                                        "example": 5
+                                                    },
+                                                    "AirlineId": {
+                                                        "type": "integer",
+                                                        "example": 1
+                                                    },
+                                                    "Status": {
+                                                        "type": "integer",
+                                                        "example": 1
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        },
+                                        "count": {
+                                            "type": "integer",
+                                            "example": 50
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Aircrafts"
+                ],
+                "summary": "Create new aircraft",
+                "description": "Create a new aircraft record",
+                "operationId": "d2f24dd492a47e08149f83a3b176c638",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "AircraftId",
+                                    "Registration",
+                                    "AircraftTypeId",
+                                    "AirlineId"
+                                ],
+                                "properties": {
+                                    "AircraftId": {
+                                        "type": "integer",
+                                        "example": 100
+                                    },
+                                    "Registration": {
+                                        "type": "string",
+                                        "example": "VN-A350"
+                                    },
+                                    "AircraftTypeId": {
+                                        "type": "integer",
+                                        "example": 10
+                                    },
+                                    "AirlineId": {
+                                        "type": "integer",
+                                        "example": 1
+                                    },
+                                    "Status": {
+                                        "type": "integer",
+                                        "enum": [
+                                            0,
+                                            1
+                                        ],
+                                        "example": 1
+                                    },
+                                    "MaxPax": {
+                                        "type": "integer",
+                                        "example": 300
+                                    },
+                                    "Mtow": {
+                                        "type": "integer",
+                                        "example": 280000
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Aircraft created successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean",
+                                            "example": true
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Aircraft created successfully"
+                                        },
+                                        "data": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/aircrafts/registration/{registration}": {
+            "get": {
+                "tags": [
+                    "Aircrafts"
+                ],
+                "summary": "Get aircraft by registration",
+                "description": "Retrieve aircraft information by registration number",
+                "operationId": "caa65704a4e927371368f6f4142b28e3",
+                "parameters": [
+                    {
+                        "name": "registration",
+                        "in": "path",
+                        "description": "Aircraft registration (e.g., VN-A321)",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "example": "VN-A321"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Aircraft found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean",
+                                            "example": true
+                                        },
+                                        "data": {
+                                            "properties": {
+                                                "AircraftId": {
+                                                    "type": "integer",
+                                                    "example": 1
+                                                },
+                                                "Registration": {
+                                                    "type": "string",
+                                                    "example": "VN-A321"
+                                                },
+                                                "AircraftTypeId": {
+                                                    "type": "integer",
+                                                    "example": 5
+                                                },
+                                                "AirlineId": {
+                                                    "type": "integer",
+                                                    "example": 1
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Aircraft not found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean",
+                                            "example": false
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Aircraft not found"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/aircrafts/{aircraftId}": {
+            "put": {
+                "tags": [
+                    "Aircrafts"
+                ],
+                "summary": "Update aircraft",
+                "description": "Update an existing aircraft record",
+                "operationId": "518efb71ee9c3f527ba1d3e571f845f9",
+                "parameters": [
+                    {
+                        "name": "aircraftId",
+                        "in": "path",
+                        "description": "Aircraft ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "example": 1
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "Registration": {
+                                        "type": "string",
+                                        "example": "VN-A321-Updated"
+                                    },
+                                    "Status": {
+                                        "type": "integer",
+                                        "enum": [
+                                            0,
+                                            1
+                                        ],
+                                        "example": 1
+                                    },
+                                    "MaxPax": {
+                                        "type": "integer",
+                                        "example": 180
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Aircraft updated successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean",
+                                            "example": true
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Aircraft updated successfully"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Aircraft not found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean",
+                                            "example": false
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Aircraft not found"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/airlines": {
+            "get": {
+                "tags": [
+                    "Airlines"
+                ],
+                "summary": "Get all active airlines",
+                "description": "Retrieve all active airlines ordered by name",
+                "operationId": "20835eb6981d4fa2332730fb19c119f6",
+                "responses": {
+                    "200": {
+                        "description": "Airlines retrieved successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean",
+                                            "example": true
+                                        },
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "AirlineId": {
+                                                        "type": "integer",
+                                                        "example": 1
+                                                    },
+                                                    "Name": {
+                                                        "type": "string",
+                                                        "example": "Vietnam Airlines"
+                                                    },
+                                                    "IataCode": {
+                                                        "type": "string",
+                                                        "example": "VN"
+                                                    },
+                                                    "IcaoCode": {
+                                                        "type": "string",
+                                                        "example": "HVN"
+                                                    },
+                                                    "Handler": {
+                                                        "type": "string",
+                                                        "example": "SAGS"
+                                                    },
+                                                    "Status": {
+                                                        "type": "integer",
+                                                        "example": 1
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        },
+                                        "count": {
+                                            "type": "integer",
+                                            "example": 15
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Airlines"
+                ],
+                "summary": "Create new airline",
+                "description": "Create a new airline record",
+                "operationId": "fddb1199b1630d20aeac780866549158",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "AirlineId",
+                                    "Name"
+                                ],
+                                "properties": {
+                                    "AirlineId": {
+                                        "type": "integer",
+                                        "example": 25
+                                    },
+                                    "Name": {
+                                        "type": "string",
+                                        "example": "New Airlines"
+                                    },
+                                    "IataCode": {
+                                        "type": "string",
+                                        "example": "NA"
+                                    },
+                                    "IcaoCode": {
+                                        "type": "string",
+                                        "example": "NEW"
+                                    },
+                                    "Handler": {
+                                        "type": "string",
+                                        "example": "SAGS"
+                                    },
+                                    "Status": {
+                                        "type": "integer",
+                                        "enum": [
+                                            0,
+                                            1
+                                        ],
+                                        "example": 1
+                                    },
+                                    "IsKorea": {
+                                        "type": "integer",
+                                        "enum": [
+                                            0,
+                                            1
+                                        ],
+                                        "example": 0
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Airline created successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean",
+                                            "example": true
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Airline created successfully"
+                                        },
+                                        "data": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean",
+                                            "example": false
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Validation error"
+                                        },
+                                        "errors": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/airlines/iata/{iataCode}": {
+            "get": {
+                "tags": [
+                    "Airlines"
+                ],
+                "summary": "Get airline by IATA code",
+                "description": "Retrieve airline information by IATA code",
+                "operationId": "2cfb08ffef7f8d883e12f7fe85254f59",
+                "parameters": [
+                    {
+                        "name": "iataCode",
+                        "in": "path",
+                        "description": "IATA code (e.g., VN, VJ)",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "example": "VN"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Airline found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean",
+                                            "example": true
+                                        },
+                                        "data": {
+                                            "properties": {
+                                                "AirlineId": {
+                                                    "type": "integer",
+                                                    "example": 1
+                                                },
+                                                "Name": {
+                                                    "type": "string",
+                                                    "example": "Vietnam Airlines"
+                                                },
+                                                "IataCode": {
+                                                    "type": "string",
+                                                    "example": "VN"
+                                                },
+                                                "IcaoCode": {
+                                                    "type": "string",
+                                                    "example": "HVN"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Airline not found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean",
+                                            "example": false
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Airline not found"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/airlines/{airlineId}": {
+            "put": {
+                "tags": [
+                    "Airlines"
+                ],
+                "summary": "Update airline",
+                "description": "Update an existing airline record",
+                "operationId": "4a4ef9c9eb0ffca18a046e2e0504dcea",
+                "parameters": [
+                    {
+                        "name": "airlineId",
+                        "in": "path",
+                        "description": "Airline ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "example": 1
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "Name": {
+                                        "type": "string",
+                                        "example": "Updated Airline Name"
+                                    },
+                                    "IataCode": {
+                                        "type": "string",
+                                        "example": "UA"
+                                    },
+                                    "IcaoCode": {
+                                        "type": "string",
+                                        "example": "UPD"
+                                    },
+                                    "Status": {
+                                        "type": "integer",
+                                        "enum": [
+                                            0,
+                                            1
+                                        ],
+                                        "example": 1
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Airline updated successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean",
+                                            "example": true
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Airline updated successfully"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Airline not found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean",
+                                            "example": false
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Airline not found"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/airports": {
+            "get": {
+                "tags": [
+                    "Airports"
+                ],
+                "summary": "Get all active airports",
+                "description": "Retrieve all active airports ordered by name",
+                "operationId": "18e2a102579da344c6e74f5ed472011b",
+                "responses": {
+                    "200": {
+                        "description": "Airports retrieved successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean",
+                                            "example": true
+                                        },
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "AirportId": {
+                                                        "type": "integer",
+                                                        "example": 1
+                                                    },
+                                                    "Name": {
+                                                        "type": "string",
+                                                        "example": "Tan Son Nhat International Airport"
+                                                    },
+                                                    "IataCode": {
+                                                        "type": "string",
+                                                        "example": "SGN"
+                                                    },
+                                                    "IcaoCode": {
+                                                        "type": "string",
+                                                        "example": "VVTS"
+                                                    },
+                                                    "City": {
+                                                        "type": "string",
+                                                        "example": "Ho Chi Minh City"
+                                                    },
+                                                    "Country": {
+                                                        "type": "string",
+                                                        "example": "Vietnam"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        },
+                                        "count": {
+                                            "type": "integer",
+                                            "example": 50
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Airports"
+                ],
+                "summary": "Create new airport",
+                "description": "Create a new airport with the provided information",
+                "operationId": "00dd59408628cb1464694d94c9d5cf8b",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "AirportId",
+                                    "Name"
+                                ],
+                                "properties": {
+                                    "AirportId": {
+                                        "description": "Unique airport ID",
+                                        "type": "integer",
+                                        "example": 1
+                                    },
+                                    "Name": {
+                                        "description": "Airport name",
+                                        "type": "string",
+                                        "example": "Tan Son Nhat International Airport"
+                                    },
+                                    "IataCode": {
+                                        "description": "IATA code",
+                                        "type": "string",
+                                        "example": "SGN"
+                                    },
+                                    "IcaoCode": {
+                                        "description": "ICAO code",
+                                        "type": "string",
+                                        "example": "VVTS"
+                                    },
+                                    "City": {
+                                        "description": "City name",
+                                        "type": "string",
+                                        "example": "Ho Chi Minh City"
+                                    },
+                                    "Country": {
+                                        "description": "Country name",
+                                        "type": "string",
+                                        "example": "Vietnam"
+                                    },
+                                    "CustomsType": {
+                                        "description": "Customs type",
+                                        "type": "string",
+                                        "example": "International"
+                                    },
+                                    "Status": {
+                                        "description": "Status (0=inactive, 1=active)",
+                                        "type": "integer",
+                                        "example": 1
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Airport created successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean",
+                                            "example": true
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Airport created successfully"
+                                        },
+                                        "data": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean",
+                                            "example": false
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Validation error"
+                                        },
+                                        "errors": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/airports/iata/{iataCode}": {
+            "get": {
+                "tags": [
+                    "Airports"
+                ],
+                "summary": "Get airport by IATA code",
+                "description": "Retrieve airport information by IATA code",
+                "operationId": "8ae170ef2485238a6350c33aea066db1",
+                "parameters": [
+                    {
+                        "name": "iataCode",
+                        "in": "path",
+                        "description": "IATA code (e.g., SGN, HAN)",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "example": "SGN"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Airport found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean",
+                                            "example": true
+                                        },
+                                        "data": {
+                                            "properties": {
+                                                "AirportId": {
+                                                    "type": "integer",
+                                                    "example": 1
+                                                },
+                                                "Name": {
+                                                    "type": "string",
+                                                    "example": "Tan Son Nhat International Airport"
+                                                },
+                                                "IataCode": {
+                                                    "type": "string",
+                                                    "example": "SGN"
+                                                },
+                                                "IcaoCode": {
+                                                    "type": "string",
+                                                    "example": "VVTS"
+                                                },
+                                                "City": {
+                                                    "type": "string",
+                                                    "example": "Ho Chi Minh City"
+                                                },
+                                                "Country": {
+                                                    "type": "string",
+                                                    "example": "Vietnam"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Airport not found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean",
+                                            "example": false
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Airport not found"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/airports/city/{city}": {
+            "get": {
+                "tags": [
+                    "Airports"
+                ],
+                "summary": "Get airports by city",
+                "description": "Retrieve all airports in a specific city",
+                "operationId": "a8e20f83b93ddf2bf18692a20ef94976",
+                "parameters": [
+                    {
+                        "name": "city",
+                        "in": "path",
+                        "description": "City name",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "example": "Ho Chi Minh City"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Airports retrieved successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean",
+                                            "example": true
+                                        },
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "AirportId": {
+                                                        "type": "integer",
+                                                        "example": 1
+                                                    },
+                                                    "Name": {
+                                                        "type": "string",
+                                                        "example": "Tan Son Nhat International Airport"
+                                                    },
+                                                    "IataCode": {
+                                                        "type": "string",
+                                                        "example": "SGN"
+                                                    },
+                                                    "IcaoCode": {
+                                                        "type": "string",
+                                                        "example": "VVTS"
+                                                    },
+                                                    "City": {
+                                                        "type": "string",
+                                                        "example": "Ho Chi Minh City"
+                                                    },
+                                                    "Country": {
+                                                        "type": "string",
+                                                        "example": "Vietnam"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        },
+                                        "count": {
+                                            "type": "integer",
+                                            "example": 2
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/airports/{airportId}": {
+            "put": {
+                "tags": [
+                    "Airports"
+                ],
+                "summary": "Update airport",
+                "description": "Update an existing airport by ID",
+                "operationId": "40ea6cafc6971e2353405c8cad968cc7",
+                "parameters": [
+                    {
+                        "name": "airportId",
+                        "in": "path",
+                        "description": "Airport ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "Name": {
+                                        "description": "Airport name",
+                                        "type": "string",
+                                        "example": "Tan Son Nhat International Airport"
+                                    },
+                                    "IataCode": {
+                                        "description": "IATA code",
+                                        "type": "string",
+                                        "example": "SGN"
+                                    },
+                                    "IcaoCode": {
+                                        "description": "ICAO code",
+                                        "type": "string",
+                                        "example": "VVTS"
+                                    },
+                                    "City": {
+                                        "description": "City name",
+                                        "type": "string",
+                                        "example": "Ho Chi Minh City"
+                                    },
+                                    "Country": {
+                                        "description": "Country name",
+                                        "type": "string",
+                                        "example": "Vietnam"
+                                    },
+                                    "CustomsType": {
+                                        "description": "Customs type",
+                                        "type": "string",
+                                        "example": "International"
+                                    },
+                                    "Status": {
+                                        "description": "Status (0=inactive, 1=active)",
+                                        "type": "integer",
+                                        "example": 1
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Airport updated successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean",
+                                            "example": true
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Airport updated successfully"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Airport not found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean",
+                                            "example": false
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Airport not found"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/carousels": {
+            "get": {
+                "tags": [
+                    "Carousels"
+                ],
+                "summary": "Get all active carousels",
+                "description": "Retrieve all active baggage carousels",
+                "operationId": "eeb1c7760d0fd6a9ab298c5c505da402",
+                "responses": {
+                    "200": {
+                        "description": "Carousels retrieved successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean",
+                                            "example": true
+                                        },
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "Id": {
+                                                        "type": "integer",
+                                                        "example": 1
+                                                    },
+                                                    "CarouselName": {
+                                                        "type": "string",
+                                                        "example": "C1"
+                                                    },
+                                                    "Terminal": {
+                                                        "type": "string",
+                                                        "example": "T1"
+                                                    },
+                                                    "Status": {
+                                                        "type": "integer",
+                                                        "example": 1
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        },
+                                        "count": {
+                                            "type": "integer",
+                                            "example": 8
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Carousels"
+                ],
+                "summary": "Create new carousel",
+                "description": "Create a new baggage carousel with the provided information",
+                "operationId": "95842f19c795e9e19a9b396cd064d1e4",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "CarouselName"
+                                ],
+                                "properties": {
+                                    "CarouselName": {
+                                        "description": "Carousel name/number",
+                                        "type": "string",
+                                        "example": "C1"
+                                    },
+                                    "Terminal": {
+                                        "description": "Terminal designation",
+                                        "type": "string",
+                                        "example": "T1"
+                                    },
+                                    "CarouselType": {
+                                        "description": "Carousel type",
+                                        "type": "string",
+                                        "example": "International"
+                                    },
+                                    "Capacity": {
+                                        "description": "Carousel capacity",
+                                        "type": "integer",
+                                        "example": 500
+                                    },
+                                    "Status": {
+                                        "description": "Status (0=inactive, 1=active)",
+                                        "type": "integer",
+                                        "example": 1
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Carousel created successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean",
+                                            "example": true
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Carousel created successfully"
+                                        },
+                                        "data": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean",
+                                            "example": false
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Validation error"
+                                        },
+                                        "errors": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/carousels/{id}": {
+            "put": {
+                "tags": [
+                    "Carousels"
+                ],
+                "summary": "Update carousel",
+                "description": "Update an existing carousel by ID",
+                "operationId": "38ef179756a3172ab0b8c8dea40c639c",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Carousel ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "CarouselName": {
+                                        "description": "Carousel name/number",
+                                        "type": "string",
+                                        "example": "C2"
+                                    },
+                                    "Terminal": {
+                                        "description": "Terminal designation",
+                                        "type": "string",
+                                        "example": "T1"
+                                    },
+                                    "CarouselType": {
+                                        "description": "Carousel type",
+                                        "type": "string",
+                                        "example": "Domestic"
+                                    },
+                                    "Capacity": {
+                                        "description": "Carousel capacity",
+                                        "type": "integer",
+                                        "example": 400
+                                    },
+                                    "Status": {
+                                        "description": "Status (0=inactive, 1=active)",
+                                        "type": "integer",
+                                        "example": 1
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Carousel updated successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean",
+                                            "example": true
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Carousel updated successfully"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Carousel not found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean",
+                                            "example": false
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Carousel not found"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/chutes": {
+            "get": {
+                "tags": [
+                    "Chutes"
+                ],
+                "summary": "Get all active chutes",
+                "description": "Retrieve all active baggage chutes",
+                "operationId": "3acf532a7d66b38c34ffd2627d71b8e8",
+                "responses": {
+                    "200": {
+                        "description": "Chutes retrieved successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean",
+                                            "example": true
+                                        },
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "Id": {
+                                                        "type": "integer",
+                                                        "example": 1
+                                                    },
+                                                    "ChuteName": {
+                                                        "type": "string",
+                                                        "example": "CH01"
+                                                    },
+                                                    "Terminal": {
+                                                        "type": "string",
+                                                        "example": "T1"
+                                                    },
+                                                    "Status": {
+                                                        "type": "integer",
+                                                        "example": 1
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        },
+                                        "count": {
+                                            "type": "integer",
+                                            "example": 10
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Chutes"
+                ],
+                "summary": "Create new chute",
+                "description": "Create a new baggage chute with the provided information",
+                "operationId": "3708cbaf1ae4672ee0b2f24fe0fa996d",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "ChuteName"
+                                ],
+                                "properties": {
+                                    "ChuteName": {
+                                        "description": "Chute name/number",
+                                        "type": "string",
+                                        "example": "CH01"
+                                    },
+                                    "Terminal": {
+                                        "description": "Terminal designation",
+                                        "type": "string",
+                                        "example": "T1"
+                                    },
+                                    "ChuteType": {
+                                        "description": "Chute type",
+                                        "type": "string",
+                                        "example": "Departure"
+                                    },
+                                    "Location": {
+                                        "description": "Chute location",
+                                        "type": "string",
+                                        "example": "North Wing"
+                                    },
+                                    "Status": {
+                                        "description": "Status (0=inactive, 1=active)",
+                                        "type": "integer",
+                                        "example": 1
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Chute created successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean",
+                                            "example": true
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Chute created successfully"
+                                        },
+                                        "data": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean",
+                                            "example": false
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Validation error"
+                                        },
+                                        "errors": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/chutes/{id}": {
+            "put": {
+                "tags": [
+                    "Chutes"
+                ],
+                "summary": "Update chute",
+                "description": "Update an existing chute by ID",
+                "operationId": "5240ece5d3102d40f3f7f42906b0fcd5",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Chute ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "ChuteName": {
+                                        "description": "Chute name/number",
+                                        "type": "string",
+                                        "example": "CH02"
+                                    },
+                                    "Terminal": {
+                                        "description": "Terminal designation",
+                                        "type": "string",
+                                        "example": "T1"
+                                    },
+                                    "ChuteType": {
+                                        "description": "Chute type",
+                                        "type": "string",
+                                        "example": "Arrival"
+                                    },
+                                    "Location": {
+                                        "description": "Chute location",
+                                        "type": "string",
+                                        "example": "South Wing"
+                                    },
+                                    "Status": {
+                                        "description": "Status (0=inactive, 1=active)",
+                                        "type": "integer",
+                                        "example": 1
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Chute updated successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean",
+                                            "example": true
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Chute updated successfully"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Chute not found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean",
+                                            "example": false
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Chute not found"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/departureflight/{id}": {
+            "get": {
+                "tags": [
+                    "DepartureFlight"
+                ],
+                "summary": "Get DepartureFlight resources",
+                "operationId": "57382a8e093ab85a0d19ca0945bde291",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "DepartureFlight"
+                ],
+                "summary": "Update a DepartureFlight resource",
+                "operationId": "25480297b2f42cd5cdf79317be51dbf5",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Resource updated"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "DepartureFlight"
+                ],
+                "summary": "Delete a DepartureFlight resource",
+                "operationId": "b57820c66bc6cfb5c73884e5632af14f",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Resource deleted"
+                    }
+                }
+            }
+        },
+        "/api/departureflight": {
+            "post": {
+                "tags": [
+                    "DepartureFlight"
+                ],
+                "summary": "Get DepartureFlight resource",
+                "operationId": "7ce37f3a79441ab5f859b3f187e46459",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "field1",
+                                    "field2",
+                                    "field3"
+                                ],
+                                "properties": {
+                                    "field1": {
+                                        "type": "string",
+                                        "example": 1
+                                    },
+                                    "field2": {
+                                        "type": "string",
+                                        "example": 1
+                                    },
+                                    "field3": {
+                                        "type": "string",
+                                        "example": 1
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Resource created"
+                    }
+                }
+            }
+        },
+        "/api/departureflightsw/{id}": {
+            "get": {
+                "tags": [
+                    "DepartureFlightSW"
+                ],
+                "summary": "Get DepartureFlightSW resources",
+                "operationId": "c977066ec8d1ad5a8cc55eed338f6357",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "DepartureFlightSW"
+                ],
+                "summary": "Update a DepartureFlightSW resource",
+                "operationId": "149f3c2dbde61590eca3eea742b36ee3",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Resource updated"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "DepartureFlightSW"
+                ],
+                "summary": "Delete a DepartureFlightSW resource",
+                "operationId": "9dc142dcb4b09a99e1be753dcc1bf158",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Resource deleted"
+                    }
+                }
+            }
+        },
+        "/api/departureflightsw": {
+            "post": {
+                "tags": [
+                    "DepartureFlightSW"
+                ],
+                "summary": "Get DepartureFlightSW resource",
+                "operationId": "3f3002201da8dda8c3b08d0489eb06a0",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "field1",
+                                    "field2",
+                                    "field3"
+                                ],
+                                "properties": {
+                                    "field1": {
+                                        "type": "string",
+                                        "example": 1
+                                    },
+                                    "field2": {
+                                        "type": "string",
+                                        "example": 1
+                                    },
+                                    "field3": {
+                                        "type": "string",
+                                        "example": 1
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Resource created"
+                    }
+                }
+            }
+        },
+        "/gates": {
+            "get": {
+                "tags": [
+                    "Gates"
+                ],
+                "summary": "Get all active gates",
+                "description": "Retrieve all active airport gates",
+                "operationId": "bf6d05e086e14c5882aa0e0aa6517d2d",
+                "responses": {
+                    "200": {
+                        "description": "Gates retrieved successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean",
+                                            "example": true
+                                        },
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "Id": {
+                                                        "type": "integer",
+                                                        "example": 1
+                                                    },
+                                                    "GateName": {
+                                                        "type": "string",
+                                                        "example": "A1"
+                                                    },
+                                                    "Terminal": {
+                                                        "type": "string",
+                                                        "example": "T1"
+                                                    },
+                                                    "Status": {
+                                                        "type": "integer",
+                                                        "example": 1
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        },
+                                        "count": {
+                                            "type": "integer",
+                                            "example": 25
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Gates"
+                ],
+                "summary": "Create new gate",
+                "description": "Create a new airport gate with the provided information",
+                "operationId": "83a17bd5cd8ff25269d119698053c51e",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "GateName"
+                                ],
+                                "properties": {
+                                    "GateName": {
+                                        "description": "Gate name/number",
+                                        "type": "string",
+                                        "example": "A1"
+                                    },
+                                    "Terminal": {
+                                        "description": "Terminal designation",
+                                        "type": "string",
+                                        "example": "T1"
+                                    },
+                                    "GateType": {
+                                        "description": "Gate type",
+                                        "type": "string",
+                                        "example": "Domestic"
+                                    },
+                                    "Status": {
+                                        "description": "Status (0=inactive, 1=active)",
+                                        "type": "integer",
+                                        "example": 1
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Gate created successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean",
+                                            "example": true
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Gate created successfully"
+                                        },
+                                        "data": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean",
+                                            "example": false
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Validation error"
+                                        },
+                                        "errors": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/gates/{id}": {
+            "put": {
+                "tags": [
+                    "Gates"
+                ],
+                "summary": "Update gate",
+                "description": "Update an existing gate by ID",
+                "operationId": "0b807a6e51c0242da7d0d21dfde4585f",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Gate ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "GateName": {
+                                        "description": "Gate name/number",
+                                        "type": "string",
+                                        "example": "A2"
+                                    },
+                                    "Terminal": {
+                                        "description": "Terminal designation",
+                                        "type": "string",
+                                        "example": "T1"
+                                    },
+                                    "GateType": {
+                                        "description": "Gate type",
+                                        "type": "string",
+                                        "example": "International"
+                                    },
+                                    "Status": {
+                                        "description": "Status (0=inactive, 1=active)",
+                                        "type": "integer",
+                                        "example": 1
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Gate updated successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean",
+                                            "example": true
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Gate updated successfully"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Gate not found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean",
+                                            "example": false
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Gate not found"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/routes": {
+            "get": {
+                "tags": [
+                    "Routes"
+                ],
+                "summary": "Get all active routes",
+                "description": "Retrieve all active flight routes",
+                "operationId": "158b71867d4ed32580a3a9d36b6ae645",
+                "responses": {
+                    "200": {
+                        "description": "Routes retrieved successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean",
+                                            "example": true
+                                        },
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "Id": {
+                                                        "type": "integer",
+                                                        "example": 1
+                                                    },
+                                                    "DepartureAirportId": {
+                                                        "type": "integer",
+                                                        "example": 1
+                                                    },
+                                                    "ArrivalAirportId": {
+                                                        "type": "integer",
+                                                        "example": 2
+                                                    },
+                                                    "Distance": {
+                                                        "type": "number",
+                                                        "example": 1200.5
+                                                    },
+                                                    "Status": {
+                                                        "type": "integer",
+                                                        "example": 1
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        },
+                                        "count": {
+                                            "type": "integer",
+                                            "example": 25
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Routes"
+                ],
+                "summary": "Create new route",
+                "description": "Create a new flight route with the provided information",
+                "operationId": "69e1304440cc242bd004febc359de838",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "DepartureAirportId",
+                                    "ArrivalAirportId"
+                                ],
+                                "properties": {
+                                    "DepartureAirportId": {
+                                        "description": "Departure airport ID",
+                                        "type": "integer",
+                                        "example": 1
+                                    },
+                                    "ArrivalAirportId": {
+                                        "description": "Arrival airport ID",
+                                        "type": "integer",
+                                        "example": 2
+                                    },
+                                    "Distance": {
+                                        "description": "Distance in kilometers",
+                                        "type": "number",
+                                        "example": 1200.5
+                                    },
+                                    "FlightTime": {
+                                        "description": "Flight time",
+                                        "type": "string",
+                                        "example": "02:30:00"
+                                    },
+                                    "Status": {
+                                        "description": "Status (0=inactive, 1=active)",
+                                        "type": "integer",
+                                        "example": 1
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Route created successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean",
+                                            "example": true
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Route created successfully"
+                                        },
+                                        "data": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean",
+                                            "example": false
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Validation error"
+                                        },
+                                        "errors": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/routes/{id}": {
+            "get": {
+                "tags": [
+                    "Routes"
+                ],
+                "summary": "Get route by ID",
+                "description": "Retrieve route information by ID",
+                "operationId": "c2040e27b165ad53f15c790fefdbf594",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Route ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "example": 1
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Route found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean",
+                                            "example": true
+                                        },
+                                        "data": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Route not found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean",
+                                            "example": false
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Route not found"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Routes"
+                ],
+                "summary": "Update route",
+                "description": "Update an existing route by ID",
+                "operationId": "1e639cb259d8eaba3d07668f194376df",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Route ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "DepartureAirportId": {
+                                        "description": "Departure airport ID",
+                                        "type": "integer",
+                                        "example": 1
+                                    },
+                                    "ArrivalAirportId": {
+                                        "description": "Arrival airport ID",
+                                        "type": "integer",
+                                        "example": 2
+                                    },
+                                    "Distance": {
+                                        "description": "Distance in kilometers",
+                                        "type": "number",
+                                        "example": 1200.5
+                                    },
+                                    "FlightTime": {
+                                        "description": "Flight time",
+                                        "type": "string",
+                                        "example": "02:30:00"
+                                    },
+                                    "Status": {
+                                        "description": "Status (0=inactive, 1=active)",
+                                        "type": "integer",
+                                        "example": 1
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Route updated successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean",
+                                            "example": true
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Route updated successfully"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Route not found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean",
+                                            "example": false
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Route not found"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Routes"
+                ],
+                "summary": "Delete route",
+                "description": "Soft delete a route by setting status to 0",
+                "operationId": "0a86f71cd858321eef8d23718a77cccc",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Route ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Route deleted successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean",
+                                            "example": true
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Route deleted successfully"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Route not found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean",
+                                            "example": false
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Route not found"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/stands": {
+            "get": {
+                "tags": [
+                    "Stands"
+                ],
+                "summary": "Get all active stands",
+                "description": "Retrieve all active aircraft stands",
+                "operationId": "8ebbd9ebe0ae90123ce436693a5d92ac",
+                "responses": {
+                    "200": {
+                        "description": "Stands retrieved successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean",
+                                            "example": true
+                                        },
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "Id": {
+                                                        "type": "integer",
+                                                        "example": 1
+                                                    },
+                                                    "StandName": {
+                                                        "type": "string",
+                                                        "example": "S1"
+                                                    },
+                                                    "Terminal": {
+                                                        "type": "string",
+                                                        "example": "T1"
+                                                    },
+                                                    "Status": {
+                                                        "type": "integer",
+                                                        "example": 1
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        },
+                                        "count": {
+                                            "type": "integer",
+                                            "example": 25
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Stands"
+                ],
+                "summary": "Create new stand",
+                "description": "Create a new aircraft stand with the provided information",
+                "operationId": "31a34099ebcfb3d07634930bcae9be89",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "StandName"
+                                ],
+                                "properties": {
+                                    "StandName": {
+                                        "description": "Stand name/number",
+                                        "type": "string",
+                                        "example": "S1"
+                                    },
+                                    "Terminal": {
+                                        "description": "Terminal designation",
+                                        "type": "string",
+                                        "example": "T1"
+                                    },
+                                    "StandType": {
+                                        "description": "Stand type",
+                                        "type": "string",
+                                        "example": "Remote"
+                                    },
+                                    "AircraftCategory": {
+                                        "description": "Aircraft category",
+                                        "type": "string",
+                                        "example": "Category C"
+                                    },
+                                    "Status": {
+                                        "description": "Status (0=inactive, 1=active)",
+                                        "type": "integer",
+                                        "example": 1
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Stand created successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean",
+                                            "example": true
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Stand created successfully"
+                                        },
+                                        "data": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean",
+                                            "example": false
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Validation error"
+                                        },
+                                        "errors": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/stands/{id}": {
+            "put": {
+                "tags": [
+                    "Stands"
+                ],
+                "summary": "Update stand",
+                "description": "Update an existing stand by ID",
+                "operationId": "41f3a46d2c398966afc9afd93e065bae",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Stand ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "StandName": {
+                                        "description": "Stand name/number",
+                                        "type": "string",
+                                        "example": "S2"
+                                    },
+                                    "Terminal": {
+                                        "description": "Terminal designation",
+                                        "type": "string",
+                                        "example": "T1"
+                                    },
+                                    "StandType": {
+                                        "description": "Stand type",
+                                        "type": "string",
+                                        "example": "Contact"
+                                    },
+                                    "AircraftCategory": {
+                                        "description": "Aircraft category",
+                                        "type": "string",
+                                        "example": "Category D"
+                                    },
+                                    "Status": {
+                                        "description": "Status (0=inactive, 1=active)",
+                                        "type": "integer",
+                                        "example": 1
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Stand updated successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean",
+                                            "example": true
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Stand updated successfully"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Stand not found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean",
+                                            "example": false
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Stand not found"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/tag-recheck/{date}": {
+            "get": {
+                "tags": [
+                    "TagRecheck"
+                ],
+                "summary": "Get TagRecheck records by date",
+                "description": "Retrieve all TagRecheck records for a specific date",
+                "operationId": "cd2cb9865f1fb7cb62e079142d764e12",
+                "parameters": [
+                    {
+                        "name": "date",
+                        "in": "path",
+                        "description": "Date in Y-m-d format",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "format": "date",
+                            "example": "2025-03-29"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Records retrieved successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean",
+                                            "example": true
+                                        },
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "Id": {
+                                                        "type": "integer",
+                                                        "example": 126
+                                                    },
+                                                    "FlightId": {
+                                                        "type": "string",
+                                                        "example": "VJ870"
+                                                    },
+                                                    "ScheduledDatetime": {
+                                                        "type": "string",
+                                                        "example": "2025-03-29 01:00:00"
+                                                    },
+                                                    "NamePassenger": {
+                                                        "type": "string",
+                                                        "example": "KIM SOOJINMS"
+                                                    },
+                                                    "SeatNumber": {
+                                                        "type": "string",
+                                                        "example": "15F"
+                                                    },
+                                                    "TagNumber": {
+                                                        "type": "string",
+                                                        "example": "0523026119"
+                                                    },
+                                                    "Status": {
+                                                        "type": "integer",
+                                                        "example": 1
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        },
+                                        "count": {
+                                            "type": "integer",
+                                            "example": 10
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/tag-recheck/{flightId}/{date}": {
+            "get": {
+                "tags": [
+                    "TagRecheck"
+                ],
+                "summary": "Get TagRecheck records by flight ID and date",
+                "description": "Retrieve TagRecheck records for a specific flight and date",
+                "operationId": "2c2eba4214083fe76c42ddbb81d40daf",
+                "parameters": [
+                    {
+                        "name": "flightId",
+                        "in": "path",
+                        "description": "Flight ID (e.g., VJ870)",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "example": "VJ870"
+                        }
+                    },
+                    {
+                        "name": "date",
+                        "in": "path",
+                        "description": "Date in Y-m-d format",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "format": "date",
+                            "example": "2025-03-29"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Records retrieved successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean",
+                                            "example": true
+                                        },
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "object"
+                                            }
+                                        },
+                                        "count": {
+                                            "type": "integer",
+                                            "example": 5
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/tag-recheck": {
+            "post": {
+                "tags": [
+                    "TagRecheck"
+                ],
+                "summary": "Create new TagRecheck record",
+                "description": "Create a new baggage recheck record",
+                "operationId": "1f1987c8c8e75c367c84fb7ab310dfe3",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "FlightId",
+                                    "ScheduledDatetime",
+                                    "NamePassenger"
+                                ],
+                                "properties": {
+                                    "FlightId": {
+                                        "type": "string",
+                                        "example": "VJ870"
+                                    },
+                                    "ScheduledDatetime": {
+                                        "type": "string",
+                                        "format": "datetime",
+                                        "example": "2025-03-29 01:00:00"
+                                    },
+                                    "NamePassenger": {
+                                        "type": "string",
+                                        "example": "KIM SOOJINMS"
+                                    },
+                                    "SeatNumber": {
+                                        "type": "string",
+                                        "example": "15F"
+                                    },
+                                    "TagNumber": {
+                                        "type": "string",
+                                        "example": "0523026119"
+                                    },
+                                    "DeviceTypeRecheck": {
+                                        "type": "integer",
+                                        "enum": [
+                                            1,
+                                            2,
+                                            3
+                                        ],
+                                        "example": 1
+                                    },
+                                    "Status": {
+                                        "type": "integer",
+                                        "enum": [
+                                            1,
+                                            2,
+                                            3,
+                                            4
+                                        ],
+                                        "example": 1
+                                    },
+                                    "RouteName": {
+                                        "type": "string",
+                                        "example": "TAE"
+                                    },
+                                    "HandlerDep": {
+                                        "type": "string",
+                                        "example": "SAGS"
+                                    },
+                                    "CounterDetail": {
+                                        "type": "string",
+                                        "example": "H6,H7,H8"
+                                    },
+                                    "City": {
+                                        "type": "string",
+                                        "example": "DAEGU"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "TagRecheck record created successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean",
+                                            "example": true
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "TagRecheck record created successfully"
+                                        },
+                                        "data": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean",
+                                            "example": false
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Validation error"
+                                        },
+                                        "errors": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/tag-recheck/{id}": {
+            "put": {
+                "tags": [
+                    "TagRecheck"
+                ],
+                "summary": "Update TagRecheck record",
+                "description": "Update an existing TagRecheck record",
+                "operationId": "64e81db82f8d44ea5c31fa267e111a87",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "TagRecheck ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "example": 126
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "FlightId": {
+                                        "type": "string",
+                                        "example": "VJ870"
+                                    },
+                                    "ScheduledDatetime": {
+                                        "type": "string",
+                                        "format": "datetime",
+                                        "example": "2025-03-29 01:00:00"
+                                    },
+                                    "NamePassenger": {
+                                        "type": "string",
+                                        "example": "KIM SOOJINMS"
+                                    },
+                                    "SeatNumber": {
+                                        "type": "string",
+                                        "example": "15F"
+                                    },
+                                    "Status": {
+                                        "type": "integer",
+                                        "enum": [
+                                            1,
+                                            2,
+                                            3,
+                                            4
+                                        ],
+                                        "example": 2
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "TagRecheck record updated successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean",
+                                            "example": true
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "TagRecheck record updated successfully"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "TagRecheck record not found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean",
+                                            "example": false
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "TagRecheck record not found"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "TagRecheck"
+                ],
+                "summary": "Delete TagRecheck record",
+                "description": "Soft delete a TagRecheck record (sets IsDelete = 1)",
+                "operationId": "405d882cd0cd66a6beac66cf308efbfd",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "TagRecheck ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "example": 126
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "TagRecheck record deleted successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean",
+                                            "example": true
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "TagRecheck record deleted successfully"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "TagRecheck record not found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean",
+                                            "example": false
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "TagRecheck record not found"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/tag-recheck/{id}/finish": {
+            "patch": {
+                "tags": [
+                    "TagRecheck"
+                ],
+                "summary": "Mark TagRecheck as finished",
+                "description": "Mark a TagRecheck record as finished (Status = 4, set FinishedDatetime)",
+                "operationId": "7f087e0f3d48e4375fe725c8463d85c0",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "TagRecheck ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "example": 126
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "TagRecheck marked as finished successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean",
+                                            "example": true
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "TagRecheck marked as finished successfully"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "TagRecheck record not found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean",
+                                            "example": false
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "TagRecheck record not found"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/users": {
+            "get": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Get all users",
+                "operationId": "d984437c865fbc5f63f68a37064e9d7d",
+                "responses": {
+                    "200": {
+                        "description": "Successful response"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    }
+                }
+            }
+        },
+        "/process-barcode": {
+            "get": {
+                "tags": [
+                    "Barcode Processing"
+                ],
+                "summary": "Process barcode data for baggage recheck",
+                "description": "Processes barcode scan data to determine if baggage recheck is required. First checks TagRecheck table, then DepartureMovementView if not found.",
+                "operationId": "9ed12b6c491127c7ce8e9b79402cec04",
+                "parameters": [
+                    {
+                        "name": "airline",
+                        "in": "query",
+                        "description": "Airline code (e.g., VJ, HY)",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "example": "VJ"
+                        }
+                    },
+                    {
+                        "name": "flightNumber",
+                        "in": "query",
+                        "description": "Flight number (e.g., 870, 0562)",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "example": "870"
+                        }
+                    },
+                    {
+                        "name": "flightDate",
+                        "in": "query",
+                        "description": "Flight date in Y-m-d format",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "format": "date",
+                            "example": "2025-03-29"
+                        }
+                    },
+                    {
+                        "name": "seatNumber",
+                        "in": "query",
+                        "description": "Seat number (e.g., 15F, 009F - leading zeros will be handled)",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "example": "15F"
+                        }
+                    },
+                    {
+                        "name": "lastName",
+                        "in": "query",
+                        "description": "Passenger last name",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "example": "KIM"
+                        }
+                    },
+                    {
+                        "name": "firstName",
+                        "in": "query",
+                        "description": "Passenger first name",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "example": "SOOJINMS"
+                        }
+                    },
+                    {
+                        "name": "languageCode",
+                        "in": "query",
+                        "description": "Language code for response message (EN, VI, KO, ZH)",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "EN",
+                                "VI",
+                                "KO",
+                                "ZH"
+                            ],
+                            "example": "EN"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success - Recheck required",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean",
+                                            "example": true
+                                        },
+                                        "Recheck": {
+                                            "type": "string",
+                                            "example": "Yes"
+                                        },
+                                        "data": {
+                                            "type": "object"
+                                        },
+                                        "Passenger": {
+                                            "type": "string",
+                                            "example": "KIM SOOJINMS"
+                                        },
+                                        "Counter": {
+                                            "type": "string",
+                                            "example": "H"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Please proceed to the recheck counter at H"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "No matching records found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean",
+                                            "example": false
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "No matching records found for the provided barcode data"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Missing required parameters",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean",
+                                            "example": false
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Missing required parameters: airline, flightNumber, flightDate"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/recheck-statistics/{date}": {
+            "get": {
+                "tags": [
+                    "Barcode Processing"
+                ],
+                "summary": "Get recheck statistics by date",
+                "description": "Returns statistics for baggage recheck operations on a specific date",
+                "operationId": "9726a8ceff116ace6e8fd15e705976ae",
+                "parameters": [
+                    {
+                        "name": "date",
+                        "in": "path",
+                        "description": "Date in Y-m-d format",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "format": "date",
+                            "example": "2025-03-29"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Statistics retrieved successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean",
+                                            "example": true
+                                        },
+                                        "data": {
+                                            "properties": {
+                                                "date": {
+                                                    "type": "string",
+                                                    "example": "2025-03-29"
+                                                },
+                                                "total_recheck": {
+                                                    "type": "integer",
+                                                    "example": 45
+                                                },
+                                                "finished_recheck": {
+                                                    "type": "integer",
+                                                    "example": 42
+                                                },
+                                                "pending_recheck": {
+                                                    "type": "integer",
+                                                    "example": 3
+                                                },
+                                                "completion_rate": {
+                                                    "type": "number",
+                                                    "example": 93.33
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/recheck-by-counter/{date}/{counter}": {
+            "get": {
+                "tags": [
+                    "Barcode Processing"
+                ],
+                "summary": "Get recheck records by counter and date",
+                "description": "Returns all recheck records for a specific counter on a specific date",
+                "operationId": "44f9543e52a3fa2a72c4d7cc94474df1",
+                "parameters": [
+                    {
+                        "name": "date",
+                        "in": "path",
+                        "description": "Date in Y-m-d format",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "format": "date",
+                            "example": "2025-03-29"
+                        }
+                    },
+                    {
+                        "name": "counter",
+                        "in": "path",
+                        "description": "Counter letter (e.g., H, C)",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "example": "H"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Records retrieved successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean",
+                                            "example": true
+                                        },
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "object"
+                                            }
+                                        },
+                                        "count": {
+                                            "type": "integer",
+                                            "example": 10
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "Aircraft Types",
+            "description": "API endpoints for managing aircraft type information"
+        },
+        {
+            "name": "Aircrafts",
+            "description": "API endpoints for managing aircraft information"
+        },
+        {
+            "name": "Airlines",
+            "description": "API endpoints for managing airline information"
+        },
+        {
+            "name": "Airports",
+            "description": "API endpoints for managing airport information"
+        },
+        {
+            "name": "Carousels",
+            "description": "API endpoints for managing baggage carousel information"
+        },
+        {
+            "name": "Chutes",
+            "description": "API endpoints for managing baggage chute information"
+        },
+        {
+            "name": "DepartureFlight",
+            "description": "API for DepartureFlight"
+        },
+        {
+            "name": "DepartureFlightSW",
+            "description": "API for DepartureFlightSW"
+        },
+        {
+            "name": "Gates",
+            "description": "API endpoints for managing airport gate information"
+        },
+        {
+            "name": "Routes",
+            "description": "API endpoints for managing flight route information"
+        },
+        {
+            "name": "Stands",
+            "description": "API endpoints for managing aircraft stand information"
+        },
+        {
+            "name": "TagRecheck",
+            "description": "API endpoints for managing TagRecheck records - CRUD operations for baggage recheck data"
+        },
+        {
+            "name": "Barcode Processing",
+            "description": "API endpoints for processing barcode data and baggage recheck operations"
+        },
+        {
+            "name": "Users",
+            "description": "Users"
+        }
+    ]
+}

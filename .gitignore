@@ -16,5 +16,9 @@ yarn-error.log
 /.fleet
 /.idea
 /.vscode
+.qodo
+/backend
 .DS_Store
 /.duckversions
+/storage
+/stubs

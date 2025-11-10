@@ -7,9 +7,10 @@ use Illuminate\Support\Facades\Schema;
 
 class TagRecheck extends Model
 {
-    protected $table = 'TagRecheck'; // Specify the table name
+    protected $table = 'TagRecheck';
+    protected $primaryKey = 'Id';
 
-    // Disable automatic timestamps
+    // Disable automatic timestamps since we have custom timestamp fields
     public $timestamps = false;
 
     // Dynamically set the fillable columns
@@ -28,15 +29,53 @@ class TagRecheck extends Model
         $this->fillable = array_diff($columns, ['created_at', 'updated_at']);
     }
 
-    public function getAllTagRecheck()
+    /**
+     * Get TagRecheck records by FlightId and date range
+     */
+    public function getTagRecheckByFlight($flightId, $startDate, $endDate)
     {
-        $recheckedBags = TagRecheck::all();
-        return $recheckedBags;
+        return self::where('FlightId', $flightId)
+            ->where('ScheduledDatetime', '>=', $startDate)
+            ->where('ScheduledDatetime', '<=', $endDate)
+            ->where('IsDelete', 0)
+            ->orderBy('ScheduledDatetime', 'asc')
+            ->get();
     }
 
-    public function getTagRecheckByTagNumber($tagnumber)
+    /**
+     * Insert new TagRecheck record
+     */
+    public function insertTagRecheck($data)
     {
-        $recheckedBags = TagRecheck::where('TagNumber', $tagnumber)->get();
-        return $recheckedBags;
+        return self::create($data);
+    }
+
+    /**
+     * Update TagRecheck record by Id
+     */
+    public function updateTagRecheck($data, $id)
+    {
+        return self::where('Id', $id)->update($data);
+    }
+
+    /**
+     * Soft delete TagRecheck record
+     */
+    public function deleteTagRecheck($id)
+    {
+        return self::where('Id', $id)->update(['IsDelete' => 1]);
+    }
+
+    /**
+     * Get TagRecheck records for API with pagination
+     */
+    public function getTagRecheckAPI($startDate, $endDate, $limit = 100)
+    {
+        return self::where('ScheduledDatetime', '>=', $startDate)
+            ->where('ScheduledDatetime', '<=', $endDate)
+            ->where('IsDelete', 0)
+            ->orderBy('ScheduledDatetime', 'desc')
+            ->limit($limit)
+            ->get();
     }
 }
