@@ -34,8 +34,8 @@ class Airlines extends Model
      */
     public function getActiveAirlines()
     {
-        return self::where('Status', 2)
-            ->orderBy('Name', 'asc')
+        return self::
+            orderBy('Name', 'asc')
             ->get();
     }
 
@@ -47,7 +47,8 @@ class Airlines extends Model
         return self::where('Status', 2)
             ->where(function($query) use ($keyword) {
                 $query->where('Name', 'like', "%{$keyword}%")
-                      ->orWhere('IcaoCode', 'like', "%{$keyword}%");
+                      ->orWhere('IcaoCode', 'like', "%{$keyword}%")
+                      ->orWhere('IataCode', 'like', "%{$keyword}%");
             })
             ->orderBy('Name', 'asc')
             ->get();

@@ -251,14 +251,15 @@ class AirlinesApi extends Controller
                 'IataCode' => 'nullable|string|max:20',
                 'IcaoCode' => 'nullable|string|max:20',
                 'Handler' => 'nullable|string|max:10',
-                'Status' => 'nullable|integer|in:0,1',
+                'Status' => 'nullable|integer',
                 'IsKorea' => 'nullable|integer|in:0,1',
                 'Add_0' => 'nullable|integer',
                 'RepresentativeContact' => 'nullable|string|max:30',
                 'AirportContact' => 'nullable|string|max:30',
-                'MeastroDCS' => 'nullable|boolean'
+                'MeastroDCS' => 'nullable|boolean',
+                'Contact' => 'nullable|string',
+                'RegularCheckin' => 'nullable|string'
             ]);
-
             // Set modify date
             $validatedData['ModifiDate'] = now();
 
